@@ -1,0 +1,17 @@
+<table class="grid">
+    <thead>
+    <tr>
+        <th ng-repeat="col in cols">{{col.title}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="row in rows">
+        <td ng-repeat="col in cols">
+            <span ng-if="col.title !== 'Edit'">{{row[col.field]}}</span>
+            <span ng-if="col.title == 'Edit'">
+                <editor-initializer></editor-initializer>
+            </span>
+        </td>
+    </tr>
+    </tbody>
+</table>

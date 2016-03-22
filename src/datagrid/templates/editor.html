@@ -1,0 +1,13 @@
+
+<div class="grideditor">
+    <div ng-repeat="col in cols">
+            <span ng-if="col.title !== 'Edit'">
+                <label>
+                    {{col.field}}
+                    <input type="text" ng-model="row[col.field]">
+                </label>
+            </span>
+    </div>
+</div>
+<div class="grideditorm">
+</div>
