@@ -1,0 +1,40 @@
+/*********************************
+ LION UI STYLE Combo COMPONENTS 
+*********************************/
+/***
+*ComboTree css
+* lijun.wang1@newtouch.cn
+*/
+.required{
+	font:12px;
+	font-family:'Microsoft YaHeis';
+	color:red;
+}
+/*bootstrap兼容问题和easyui的bug*/
+.panel-header, .panel-body {border-width: 0px;}
+.datagrid,.combo-p{border:solid 1px #D4D4D4;}
+.datagrid *{
+	-webkit-box-sizing:content-box;
+	-moz-box-sizing:content-box;
+	box-sizing:content-box;
+}
+.dataTables_scrollHeadInner table.dataTable {
+	clear: both;
+	margin-top: 0px !important;
+	margin-bottom: 0px !important;
+	max-width: none !important;
+	border-top:0px !important;
+	border-left:0px !important;
+	width:100%;
+}
+.sorting_317{
+	width: 317px!important;
+}
+.dataTables_scrollBody  table.dataTable {
+	border-left:0px !important;
+	border-bottom:solid 1px #D4D4D4;
+	margin-bottom: 0px !important;
+}
+.dataTables_scrollBody .dataTables_empty{
+	border-bottom:solid 1px #D4D4D4;
+}

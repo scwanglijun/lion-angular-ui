@@ -7,7 +7,7 @@ var Layout = function() {
 
     var layoutCssPath = 'admin/layout4/css/';
 
-    var resBreakpointMd = Metronic.getResponsiveBreakpoint('md');  //768px
+    var resBreakpointMd = Metronic.getResponsiveBreakpoint('md');
 
     //* BEGIN:CORE HANDLERS *//
     // this function handles responsive layout on screen size resize or mobile device rotate.

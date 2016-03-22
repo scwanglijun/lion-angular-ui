@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html  ng-app="one">
+<head lang="en">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>DropMenu示例</title>
+    <link rel="stylesheet" href="../../assets/" />
+    <script src="../../bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="combonew.js"></script>
+    <script>
+        var one = angular.module('one',['one.ui']);
+        one.controller('AppController',['$scope',function($scope){
+            $scope.menus =[
+                "百度",
+                "腾讯",
+                "新浪",
+                "搜狐"
+            ];
+        }]);
+    </script>
 </head>
-<body>
-
+<body ng-controller="AppController">
+下拉框：<one-drop-menu ng-model="menus"></one-drop-menu>
 </body>
 </html>

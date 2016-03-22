@@ -11,13 +11,21 @@ var Metronic = function() {
 
     var resizeHandlers = [];
 
-    var assetsPath = '../../assets/';
+        /**获取应用上下文根属性*/
+   var context=function(){
+         //获取应用的上下文根路径
+         var pathname=window.location.pathname;
+         var indexNext= pathname.indexOf("/",1);
+         return pathname.substr(0,indexNext);
+   }();
 
-    var globalImgPath = 'global/img/';
+    var assetsPath =context+'/resources/';
 
-    var globalPluginsPath = 'global/plugins/';
+    var globalImgPath =context+ '/global/img/';
 
-    var globalCssPath = 'global/css/';
+    var globalPluginsPath =context+ '/global/plugins/';
+
+    var globalCssPath = context+'/global/css/';
 
     // theme layout color set
 
@@ -29,6 +37,8 @@ var Metronic = function() {
         'grey': '#95a5a6',
         'yellow': '#F8CB00'
     };
+
+  
 
     // initializes main settings
     var handleInit = function() {

@@ -1,12 +1,39 @@
 var Calendar = function() {
-
+	
 
     return {
         //main function to initiate the module
         init: function() {
             Calendar.initCalendar();
         },
+        formatDate: function(d){
+    		var ret=d.getFullYear()+"-"     
+    		ret+=("00"+(d.getMonth()+1)).slice(-2)+"-"
+    		ret+=("00"+d.getDate()).slice(-2)    
+    		return ret;  
 
+        },
+        formatTime:function(d){
+        	 var ret=("00"+d.getHours()).slice(-2)+":"     
+        	 ret+=("00"+d.getMinutes()).slice(-2)
+        	 return ret;
+        },
+        isElemOverDiv :function(draggedItem, dropArea) {
+        	var a = $(draggedItem).offset;	
+        	a.right = $(draggedItem).outerWidth + a.left;
+        	a.bottom = $(draggedItem).outerHeight + a.top;
+        	
+        	var b = $(dropArea).offset;
+        	a.right = $(dropArea).outerWidth + b.left;
+        	a.bottom = $(dropArea).outerHeight + b.top;
+
+        	// Compare
+        	if (a.left >= b.left
+        		&& a.top >= b.top
+        		&& a.right <= b.right
+        		&& a.bottom <= b.bottom) { return true; }
+        	return false;
+		},
         initCalendar: function() {
 
             if (!jQuery().fullCalendar) {
@@ -53,119 +80,67 @@ var Calendar = function() {
                     };
                 }
             }
-
-            var initDrag = function(el) {
-                // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
-                // it doesn't need to have a start or end
-                var eventObject = {
-                    title: $.trim(el.text()) // use the element's text as the event title
-                };
-                // store the Event Object in the DOM element so we can get to it later
-                el.data('eventObject', eventObject);
-                // make the event draggable using jQuery UI
-                el.draggable({
-                    zIndex: 999,
-                    revert: true, // will cause the event to go back to its
-                    revertDuration: 0 //  original position after the drag
-                });
-            };
-
-            var addEvent = function(title) {
-                title = title.length === 0 ? "Untitled Event" : title;
-                var html = $('<div class="external-event label label-default">' + title + '</div>');
-                jQuery('#event_box').append(html);
-                initDrag(html);
-            };
-
+            
             $('#external-events div.external-event').each(function() {
                 initDrag($(this));
             });
-
-            $('#event_add').unbind('click').click(function() {
-                var title = $('#event_title').val();
-                addEvent(title);
-            });
-
-            //predefined events
-            $('#event_box').html("");
-            addEvent("My Event 1");
-            addEvent("My Event 2");
-            addEvent("My Event 3");
-            addEvent("My Event 4");
-            addEvent("My Event 5");
-            addEvent("My Event 6");
-
+            
             $('#calendar').fullCalendar('destroy'); // destroy the calendar
+            
             $('#calendar').fullCalendar({ //re-initialize the calendar
                 header: h,
+                dateFormat: 'yyyy-mm-dd',
+                timeFormat:'H:mm',
+                monthNames: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+                monthNamesShort: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+                dayNames: ["周日", "周一", "周二", "周三", "周四", "周五", "周六"],
+                dayNamesShort: ["周日", "周一", "周二", "周三", "周四", "周五", "周六"],
+                today: ["今天"],
                 defaultView: 'month', // change default view with available options from http://arshaw.com/fullcalendar/docs/views/Available_Views/ 
-                slotMinutes: 15,
-                editable: true,
-                droppable: true, // this allows things to be dropped onto the calendar !!!
-                drop: function(date, allDay) { // this function is called when something is dropped
-
-                    // retrieve the dropped element's stored Event Object
-                    var originalEventObject = $(this).data('eventObject');
-                    // we need to copy it, so that multiple events don't have a reference to the same object
-                    var copiedEventObject = $.extend({}, originalEventObject);
-
-                    // assign it the date that was reported
-                    copiedEventObject.start = date;
-                    copiedEventObject.allDay = allDay;
-                    copiedEventObject.className = $(this).attr("data-class");
-
-                    // render the event on the calendar
-                    // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
-                    $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
-
-                    // is the "remove after drop" checkbox checked?
-                    if ($('#drop-remove').is(':checked')) {
-                        // if so, remove the element from the "Draggable Events" list
-                        $(this).remove();
-                    }
+                buttonText: {
+                	 today: '本月',
+                	 month: '月',
+                	 week: '周',
+                	 day: '日'
                 },
-                events: [{
-                    title: 'All Day Event',
-                    start: new Date(y, m, 1),
-                    backgroundColor: Metronic.getBrandColor('yellow')
-                }, {
-                    title: 'Long Event',
-                    start: new Date(y, m, d - 5),
-                    end: new Date(y, m, d - 2),
-                    backgroundColor: Metronic.getBrandColor('green')
-                }, {
-                    title: 'Repeating Event',
-                    start: new Date(y, m, d - 3, 16, 0),
-                    allDay: false,
-                    backgroundColor: Metronic.getBrandColor('red')
-                }, {
-                    title: 'Repeating Event',
-                    start: new Date(y, m, d + 4, 16, 0),
-                    allDay: false,
-                    backgroundColor: Metronic.getBrandColor('green')
-                }, {
-                    title: 'Meeting',
-                    start: new Date(y, m, d, 10, 30),
-                    allDay: false,
-                }, {
-                    title: 'Lunch',
-                    start: new Date(y, m, d, 12, 0),
-                    end: new Date(y, m, d, 14, 0),
-                    backgroundColor: Metronic.getBrandColor('grey'),
-                    allDay: false,
-                }, {
-                    title: 'Birthday Party',
-                    start: new Date(y, m, d + 1, 19, 0),
-                    end: new Date(y, m, d + 1, 22, 30),
-                    backgroundColor: Metronic.getBrandColor('purple'),
-                    allDay: false,
-                }, {
-                    title: 'Click for Google',
-                    start: new Date(y, m, 28),
-                    end: new Date(y, m, 29),
-                    backgroundColor: Metronic.getBrandColor('yellow'),
-                    url: 'http://google.com/',
-                }]
+                editable:true,
+                slotMinutes: 15,
+                events: 'list.json',
+                dayClick: function(date, allDay, jsEvent, view) {
+                	$('#sysCalendarForm').reset();
+                	$('.modal-footer span').hide();
+                	var seldate = Calendar.formatDate(new Date(date));
+                	$('#basic').modal();
+                    $('#basic').find('.modal-header h4 span').text('新建事件');
+                    $('#startDate').val(seldate);
+                    $('#endDate').val(seldate);
+                    return;
+                },
+                eventClick: function(calEvent, jsEvent, view) {
+                	$('#sysCalendarForm').reset();
+                	$('.modal-footer span').show();
+                	$('#basic').modal();
+                    $('#basic').find('.modal-header h4 span').text('编辑事件');
+                    $('#id').val(calEvent.id);
+                    $('#event').val(calEvent.title);
+                    var startDate = Calendar.formatDate(new Date(calEvent.start._i));
+                    var startTime = Calendar.formatTime(new Date(calEvent.start._i));
+                    var endDate = Calendar.formatDate(new Date(calEvent.end._i));
+                    var endTime = Calendar.formatTime(new Date(calEvent.end._i));
+                    $('#startDate').val(startDate);
+                    $('#starttimepicker').val(startTime);
+                    $('#endDate').val(endDate);
+                    $('#endtimepicker').val(endTime);
+                    if(startTime != '00:00'){
+                    	$('#isallday').attr('checked',false)
+                    }
+                    if($('#isallday').attr('checked')=='checked'){
+             		   $("div[name='timepicker']").css('display','none');
+             	   }else{
+             		   $("div[name='timepicker']").css('display','block');
+             	   }
+                   return;
+                }
             });
 
         }

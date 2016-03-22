@@ -296,20 +296,7 @@ Error state for WYSIWYG Editors
   border: 1px solid #faebcc !important;
 }
 
-/***
-Bootstrap Modal
-***/
-/* fix: content shifting to the right on modal open */
-.modal-open.page-overflow .page-container,
-.modal-open.page-overflow .page-container .navbar-fixed-top,
-.modal-open.page-overflow .page-container .navbar-fixed-bottom,
-.modal-open.page-overflow .modal-scrollable {
-  overflow-y: auto !important;
-}
 
-.modal-scrollable {
-  overflow: hidden !important;
-}
 
 /* BS 3.3.1 fix */
 .modal-backdrop {
@@ -899,7 +886,7 @@ Datatables Plugin(in v1.3)
 }
 
 .dataTable .table-checkbox {
-  width: 8px !important;
+  width: 15px !important;
 }
 
 @media (max-width: 768px) {
@@ -1087,18 +1074,24 @@ Extended pagination
 Scroller Extension
 ***/
 .dataTables_scroll {
-  margin-bottom: 10px;
+  margin-bottom:0px;
+  border-bottom: 0 !important;
 }
 
 .dataTables_scrollHead {
-  border-bottom: 2px solid #ddd !important;
+  margin:0px;
+  padding:0px;
+  border-bottom: 1px solid #ddd !important;
+}
+.dataTables_scrollHead .table .dataTable{
+  margin:0px;
 }
 .dataTables_scrollHead thead th {
   border-bottom: 0 !important;
 }
 
 .dataTables_scrollBody {
-  border-bottom: 1px solid #ddd !important;
+  border-bottom: 0px solid #ddd !important;
 }
 
 /***

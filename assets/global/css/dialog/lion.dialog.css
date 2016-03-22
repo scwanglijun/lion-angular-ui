@@ -1,0 +1,320 @@
+/*********************************
+ LION UI STYLE DIALOG COMPONENTS 
+*********************************/
+/***
+* lion Dialog css
+* lijun.wang1@newtouch.cn
+*/
+.lion-modal{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  display: none;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+  font-family:"Microsoft YaHei";
+}
+.lion-modal.lion-fade .lion-modal-dialog {
+  -webkit-transition: -webkit-transform .3s ease-out;
+       -o-transition:      -o-transform .3s ease-out;
+          transition:         transform .3s ease-out;
+  -webkit-transform: translate(0, -25%);
+      -ms-transform: translate(0, -25%);
+       -o-transform: translate(0, -25%);
+          transform: translate(0, -25%);
+}
+.lion-modal.in .lion-modal-dialog {
+  -webkit-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+       -o-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+.lion-modal-open .lion-modal {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.lion-modal-dialog {
+  position: relative;
+  width: auto;
+  margin: 10px;
+}
+.lion-modal-content {
+  position: relative;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+          background-clip: padding-box;
+  border: 1px solid #999;
+  border: 1px solid rgba(0, 0, 0, .2);
+  border-radius: 6px;
+  outline: 0;
+  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+          box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+}
+.lion-modal-backdrop {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: #333;
+}
+.lion-modal-backdrop.lion-fade {
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+.lion-modal-backdrop.in {
+  filter: alpha(opacity=50);
+  opacity: .5;
+}
+.lion-modal-header {
+  min-height: 16.42857143px;
+  padding: 15px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.lion-modal-header .close {
+  margin-top: -2px;
+}
+.lion-modal-title {
+  margin: 0;
+  line-height: 1.42857143;
+  font-weight:bold;
+  font-family:"Microsoft YaHei";
+}
+.lion-modal-body {
+  position: relative;
+  padding: 15px;
+}
+.lion-modal-footer {
+  padding: 15px;
+  border-top: 1px solid #e5e5e5;
+}
+
+.btnaligncenter{
+  text-align: center;
+}
+
+.btnalignleft{
+  text-align:left;
+}
+
+.btnalignright{
+  text-align:right;
+}
+
+.lion-modal-footer .btn + .btn {
+  margin-bottom: 0;
+  margin-left: 10px;
+}
+.lion-modal-footer .btn-group .btn + .btn {
+  margin-left: -1px;
+}
+.lion-modal-footer .btn-block + .btn-block {
+  margin-left: 0;
+}
+.lion-modal-scrollbar-measure {
+  position: absolute;
+  top: -9999px;
+  width: 50px;
+  height: 50px;
+  overflow: scroll;
+}
+@media (min-width: 768px) {
+  .lion-modal-dialog {
+    width: 600px;
+    margin: 30px auto;
+  }
+  .lion-modal-content {
+    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+  }
+  .lion-modal-sm {
+    width: 300px;
+  }
+}
+@media (min-width: 992px) {
+  .lion-modal-lg {
+    width: 900px;
+  }
+}
+.lion-modal {
+  z-index: 10050;
+  outline:none;
+  overflow-y: auto !important;
+  /* Fix content shifting to the right on modal open due to scrollbar closed */
+}
+.lion-modal .lion-modal-header {
+  border-bottom: 1px solid #EFEFEF;
+}
+.lion-modal .lion-modal-header h3 {
+  font-weight: 300;
+}
+.lion-modal .lion-modal-header .close {
+  margin-top: 0px !important;
+}
+.lion-modal .lion-modal-dialog {
+  z-index: 10051;
+}
+.lion-modal > .loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -22px;
+  margin-left: -22px;
+}
+.lion-modal.in .page-loading {
+  display: none;
+}
+
+.lion-modal-open {
+  overflow-y: auto !important;
+}
+
+.lion-modal-open-noscroll {
+  overflow-y: hidden !important;
+}
+
+.lion-modal-backdrop {
+  border: 0;
+  outline: none;
+  z-index: 10049;
+}
+.lion-modal-backdrop, .lion-modal-backdrop.lion-fade.in {
+  background-color: #333 !important;
+   filter: alpha(opacity=50);
+}
+
+/* Full width lion-modal */
+.lion-modal-full.lion-modal-dialog {
+  width: 99%;
+}
+
+@media (max-width: 768px) {
+  .lion-modal-full.lion-modal-dialog {
+    width: auto;
+  }
+}
+.lion-modal-open {
+  overflow: hidden;
+}
+
+/* Modal Overflow */
+
+.lion-modal-overflow.modal {
+  top: 1%;
+}
+
+.lion-modal-overflow.modal.fade {
+  top: -100%;
+}
+
+.lion-modal-overflow.modal.fade.in {
+  top: 1%;
+}
+
+.lion-modal-overflow .modal-body {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Responsive */
+
+@media (min-width: 1200px) {
+  .lion-modal.container {
+    width: 1170px;
+    margin-left: -585px;
+  }
+}
+
+@media (max-width: 979px) {
+  .lion-modal, 
+  .lion-modal.container,
+  .lion-modal.lion-modal-overflow   {
+    top: 1%;
+    right: 1%;
+    left: 1%;
+    bottom: auto;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .lion-modal.lion-fade.in, 
+  .lion-modal.container.fade.in,
+  .lion-modal.lion-modal-overflow.fade.in {
+    top: 1%;
+    bottom: auto;
+  }
+  
+  .lion-modal-body,
+  .lion-modal-overflow .lion-modal-body {
+    position: static;
+    margin: 0;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+  
+  .lion-modal-footer,
+  .lion-modal-overflow .lion-modal-footer {
+    position: static;
+  }
+}
+
+.lion-loading-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -12px 0 0 -12px;
+}
+
+/*
+Animate.css - http://daneden.me/animate
+Licensed under the ☺ license (http://licence.visualidiot.com/)
+
+Copyright (c) 2012 Dan Eden*/
+
+.animated {
+  -webkit-animation-duration: 1s;
+     -moz-animation-duration: 1s;
+       -o-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+     -moz-animation-fill-mode: both;
+       -o-animation-fill-mode: both;
+          animation-fill-mode: both;
+}
+
+@-webkit-keyframes shake {
+  0%, 100% {-webkit-transform: translateX(0);}
+  10%, 30%, 50%, 70%, 90% {-webkit-transform: translateX(-10px);}
+  20%, 40%, 60%, 80% {-webkit-transform: translateX(10px);}
+}
+
+@-moz-keyframes shake {
+  0%, 100% {-moz-transform: translateX(0);}
+  10%, 30%, 50%, 70%, 90% {-moz-transform: translateX(-10px);}
+  20%, 40%, 60%, 80% {-moz-transform: translateX(10px);}
+}
+
+@-o-keyframes shake {
+  0%, 100% {-o-transform: translateX(0);}
+  10%, 30%, 50%, 70%, 90% {-o-transform: translateX(-10px);}
+  20%, 40%, 60%, 80% {-o-transform: translateX(10px);}
+}
+
+@keyframes shake {
+  0%, 100% {transform: translateX(0);}
+  10%, 30%, 50%, 70%, 90% {transform: translateX(-10px);}
+  20%, 40%, 60%, 80% {transform: translateX(10px);}
+}
+
+.shake {
+  -webkit-animation-name: shake;
+  -moz-animation-name: shake;
+  -o-animation-name: shake;
+  animation-name: shake;
+}

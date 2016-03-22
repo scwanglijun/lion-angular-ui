@@ -4699,6 +4699,7 @@ Responsive & Scrollable Tables
 .table-scrollable > .table-bordered > tbody > tr > td:first-child,
 .table-scrollable > .table-bordered > tfoot > tr > td:first-child {
   border-left: 0;
+  text-align:center;
 }
 .table-scrollable > .table-bordered > thead > tr > th:last-child,
 .table-scrollable > .table-bordered > tbody > tr > th:last-child,
