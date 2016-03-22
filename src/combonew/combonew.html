@@ -1,24 +1,48 @@
 <!DOCTYPE html>
-<html  ng-app="one">
+<html  ng-app="lion">
 <head lang="en">
     <meta charset="UTF-8">
     <title>DropMenu示例</title>
-    <link rel="stylesheet" href="../../assets/" />
+    <!--<link href="../../assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>-->
+    <!--<link href="../../assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>-->
+    <link href="../../assets/global/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <!--<link href="../../assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>-->
+    <!--<link href="../../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>-->
+    <!--<link href="../../assets/global/css/components-rounded.css" id="style_components" rel="stylesheet" type="text/css"/>-->
+    <!--<link href="../../assets/global/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" type="text/css" />-->
+    <link href="../../assets/global/plugins/select2/select2.css" rel="stylesheet" type="text/css"/>
+    <link href="../../assets/global/css/plugins.css" rel="stylesheet" type="text/css"/>
+    <style>
+        .select2-container .select2-choice abbr{
+            display: block;
+        }
+        .select2-results li:hover{
+            background: #eee;
+        }
+        .select2-results li{
+            padding-left: 4px;
+        }
+        .select2-results{
+            padding-left: 0;
+        }
+    </style>
+
     <script src="../../bower_components/angular/angular.min.js"></script>
     <script type="text/javascript" src="combonew.js"></script>
     <script>
-        var one = angular.module('one',['one.ui']);
-        one.controller('AppController',['$scope',function($scope){
-            $scope.menus =[
-                "百度",
-                "腾讯",
-                "新浪",
-                "搜狐"
-            ];
+        var lion = angular.module('lion',['lion.ui']);
+        lion.controller('AppController',['$scope',function($scope){
+
         }]);
     </script>
 </head>
 <body ng-controller="AppController">
-下拉框：<one-drop-menu ng-model="menus"></one-drop-menu>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            下拉框：<lion-combonew placeholder="请选择列表项" resources="typecombox.json"></lion-combonew>
+        </div>
+    </div>
+</div>
 </body>
 </html>

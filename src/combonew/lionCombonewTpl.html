@@ -1,0 +1,25 @@
+<div class="ui-select-container ui-select-bootstrap dropdown">
+    <div class="select2-container lion-combo form-control select2" id="s2id_CodeList">
+        <a href="javascript:void(0)" class="select2-choice select2-default">
+            <span class="select2-chosen" id="select2-chosen" ng-click="lion.ui.dropMenu.showMenu()">{{lion.ui.dropMenu.placeholder}}</span>
+            <abbr class="select2-search-choice-close" ng-show="lion.ui.dropMenu.close" ng-click="lion.ui.dropMenu.clearData()"></abbr>
+            <span class="select2-arrow">
+                <b role="presentation"></b>
+            </span>
+        </a>
+    </div>
+
+    <div class="select2-drop" id="select2-drop" ng-show="lion.ui.dropMenu.showContent">
+        <div class="select2-search select2-search-hidden select2-offscreen">
+            <label for="s2id_autogen5_search" class="select2-offscreen"></label>
+            <input type="text" autocomplete="off" id="s2id_autogen5_search">
+        </div>
+        <ul class="select2-results" id="select2-results-5">
+            <li class="select2-results-dept-0 select2-result select2-result-selectable" ng-repeat="menu in lion.ui.dropMenu.menus" ng-click="lion.ui.dropMenu.showData(this)">
+                <div class="select2-result-label" id="select2-result-label-142" role="option">
+                    <span class="select2-match"></span>{{menu.nameZh}}
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
