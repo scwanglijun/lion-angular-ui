@@ -67,7 +67,7 @@ var Layout = function () {
             });
         }
 
-        if (!el || el.size() == 0) {
+        if (!el || el.size() === 0) {
             return;
         }
 

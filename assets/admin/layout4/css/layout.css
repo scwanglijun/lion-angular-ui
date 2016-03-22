@@ -948,7 +948,7 @@ Page sidebar
   font-size: 16px;
   font-family: FontAwesome;
   height: auto;
-  content: "\f105";
+  content: "\f104";
   font-weight: 300;
   text-shadow: none;
 }
@@ -1026,7 +1026,6 @@ Page sidebar
   display: block;
 }
 
-/*重点开始*/
 @media (min-width: 992px) {
   /* 992px */
   .page-sidebar {
@@ -1380,8 +1379,6 @@ Page content
   float: right;
 }
 
-
-/*面包屑导航部分*/
 .breadcrumb {
   background: none;
   padding: 0 0 15px 0;

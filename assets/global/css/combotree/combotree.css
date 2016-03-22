@@ -1,0 +1,37 @@
+/*********************************
+ LION UI STYLE Combo COMPONENTS 
+*********************************/
+/***
+*ComboTree css
+* lijun.wang1@newtouch.cn
+*/
+.lion-combotree{
+	font-family:"Microsoft YaHei";
+}
+.lion-combotree .content{
+	font-family:"Microsoft YaHei";
+	position:absolute;
+	background-color:#fff;
+	z-index:999999;
+	overflow-y:auto;
+	overflow-x:auto;
+	width: auto;
+	height:300px;
+	border:1px solid #ccc;
+	-webkit-border-radius: 3px;
+  	-moz-border-radius: 3px;
+  	border-radius: 3px;
+  	display:none;
+  	margin-top:2px;
+.lion-combotree .content ul{
+	margin-top:0px;
+	width:auto;
+	background-color:#fff;
+	border:1px solid #ccc;
+	-webkit-border-radius: 3px;
+  	-moz-border-radius: 3px;
+  	border-radius: 3px;
+}
+.lion-combotree .open{
+	display:block;
+}

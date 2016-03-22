@@ -2,8 +2,12 @@
 Login page
 ***/
 /* bg color */
+body{
+   font-family:'Microsoft YaHeis';
+}
 .login {
   background-color: #364150 !important;
+  font-family:'Microsoft YaHeis';
 }
 
 .login .logo {
@@ -88,6 +92,7 @@ Login page
 .login .content .form-title {
   font-weight: 300;
   margin-bottom: 25px;
+  font-family:'Microsoft YaHeis';
 }
 
 .login .content .form-actions {

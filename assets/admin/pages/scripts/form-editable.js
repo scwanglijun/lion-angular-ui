@@ -97,7 +97,7 @@ var FormEditable = function () {
 
         //set editable mode based on URL parameter
         if (Metronic.getURLParameter('mode') == 'inline') {
-            $.fn.editable.defaults.mode = 'inline';  //设置为内联文本框
+            $.fn.editable.defaults.mode = 'inline';
             $('#inline').attr("checked", true);
             jQuery.uniform.update('#inline');
         } else {
