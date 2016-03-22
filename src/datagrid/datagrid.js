@@ -59,6 +59,16 @@ angular.module('app').directive("grid",[function(){
                 $scope.rows = rows;
                 $scope.cols = cols;
             });
+            $scope.rank=function(){
+                function JsonSort(json,key){
+                    return json.sort(function(a, b) {
+                        var x = a[key];
+                        var y = b[key];
+                        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+                    });
+                }
+                $scope.rows = JsonSort($scope.rows,this.$parent.col.field);
+            }
         }
     };
 }]);
@@ -74,20 +84,20 @@ angular.module('app').directive("withInlineEditor",[function(){
         }
     };
 }]);
-angular.module('app').directive("editorInitializer",function($compile, $templateCache){
-    return{
-        restrict: 'E',
-        templateUrl:"templates/editor_initializer.html",
-        controller:function($scope){
-            $scope.edit = function (row) {
-                $scope.$broadcast('edit',row);
-            };
-        },
-        link: function (scope, element, attributes) {
-            scope.$on('edit',function(e,row){
-                var editor = $compile($templateCache.get("templates/editor.html"))(scope);
-                $(editor).insertAfter(element.parents("tr"));
-            });
-        }
-    };
-});
+//angular.module('app').directive("editorInitializer",function($compile, $templateCache){
+//    return{
+//        restrict: 'E',
+//        templateUrl:"templates/editor_initializer.html",
+//        controller:function($scope){
+//            $scope.edit = function (row) {
+//                $scope.$broadcast('edit',row);
+//            };
+//        },
+//        link: function (scope, element, attributes) {
+//            scope.$on('edit',function(e,row){
+//                var editor = $compile($templateCache.get("templates/editor.html"))(scope);
+//                $(editor).insertAfter(element.parents("tr"));
+//            });
+//        }
+//    };
+//});
