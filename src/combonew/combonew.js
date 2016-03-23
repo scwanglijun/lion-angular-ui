@@ -1,27 +1,21 @@
 /**
  * Created by xiang.wu on 16/3/1.
  * @ngdoc directive
- * @name oneDropMenu
- * @module one.ui
- * @restrict E
- * @author mengdie.zhong@newtouch.cn
+ * @name lionCombonew
+ * @module lion.ui
+ * @restrict EA
+ * @author xinag.wu@newtouch.cn
  * @description
  *
  * 下拉列表，所有属性均直接支持angularJS属性
  *
  * @usage
  * ```html
- *      <lion-combonew></lion-combonew>
+ *      <lion-combonew placeholder="请选择列表项" resources="typecombox.json"></lion-combonew>
  * ```
  * ```javascript
  *      var lion = angular.module('lion',['lion.ui']);
  lion.controller('AppController',['$scope',function($scope){
-            $scope.menus =[
-                "百度",
-                "腾讯",
-                "新浪",
-                "搜狐"
-            ];
 
         }]);
  * ```

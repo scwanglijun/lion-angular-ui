@@ -1,0 +1,14 @@
+<div>
+    <span ng-if="doing_async">...loading...</span>
+    <abn-tree
+            tree-data         = "my_data"
+            tree-control      = "my_tree"
+            on-select         = "my_tree_handler(branch)"
+            expand-level      = "2"
+            initial-selection = "Granny Smith"
+            icon-leaf         = "fa fa-file-o"
+            icon-expand       = "fa fa-plus"
+            icon-collapse     = "fa fa-minus"
+    >
+    </abn-tree>
+</div>
