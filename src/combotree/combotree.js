@@ -32,21 +32,29 @@
             restrict:'EA',
             replace:true,
             transclude:true,
-            scope: {},
             controller: [ "$scope", function($scope) {
 
             }],
             template:
             '<div class="btn-group lion-combotree bootstrap-select form-control">'+
-            '<button class="btn  form-control dropdown-toggle" id="btnparentResourceId">'+
-            '<span class="pull-left">请选择父级资源</span>'+
+            '<button class="btn form-control dropdown-toggle" ng-click="showContent()">'+
+            '<span class="pull-left">{{placeholer}}</span>'+
             '<i class="caret"></i>'+
             '</button>'+
-            '<div class="content" ng-transclude></div>'+
-            '</div>'
+            '<div class="content" ng-transclude ng-show="lion.showContent"></div>'+
+            '</div>',
+            link: function (scope,element,attrs) {
+                scope.placeholer = attrs.placeholder;
+                scope.lion = scope.lion||{};
+                scope.lion.showContent = false;
+                scope.showContent = function () {
+                    scope.lion.showContent = !scope.lion.showContent;
+                };
+            }
         }
-    }]).
-    directive('lionCombotreeContent',function () {
+    }])
+
+    /*.directive('lionCombotreeContent',function () {
         return {
             require: '^lionCombotree',
             restrict: 'E',
@@ -58,5 +66,5 @@
             templateUrl:'lionCombotreeTpl.html',
             replace: true
         };
-    });
+    });*/
 })();

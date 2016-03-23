@@ -13,21 +13,33 @@
     <!--<link href="../../assets/global/plugins/select2/select2.css" rel="stylesheet" type="text/css"/>-->
     <link href="../../assets/global/css/plugins.css" rel="stylesheet" type="text/css"/>
     <link href="../../assets/global/plugins/angular-bootstrap-nav-tree/abn_tree.css" rel="stylesheet" type="text/css"/>
+    <style>
+      .content{
+          position: absolute;
+          top:36px;
+          border:1px solid #eeeeee;
+          border-radius: 4px;
+          width: 100%;
+      }
+    </style>
 
     <script src="../../bower_components/angular/angular.min.js"></script>
-    <script type="text/javascript" src="combotree.js"></script>
     <script src="../../assets/global/plugins/angular-bootstrap-nav-tree/abn_tree_directive.js"></script>
+    <script type="text/javascript" src="combotree.js"></script>
     <script>
-        var lion = angular.module('lion',['lion.ui']);
+        var lion = angular.module('lion',['lion.ui','angularBootstrapNavTree']);
         lion.controller('AbnTestController', function($scope, $timeout) {
             var apple_selected, tree, treedata_avm, treedata_geography;
+
             $scope.my_tree_handler = function(branch) {
+                console.log(this);
                 var _ref;
                 $scope.output = "You selected: " + branch.label;
                 if ((_ref = branch.data) != null ? _ref.description : void 0) {
                     return $scope.output += '(' + branch.data.description + ')';
                 }
             };
+
             apple_selected = function(branch) {
                 return $scope.output = "APPLE! : " + branch.label;
             };
@@ -171,6 +183,7 @@
                     }
                 });
             };
+
         });
     </script>
 </head>
@@ -178,10 +191,23 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3">
-            下拉树形：<lion-combotree placeholder="请选择父级资源">
-                        <lion-combotree-content></lion-combotree-content>
-                    </lion-combotree>
-
+            下拉树形:
+            <lion-combotree placeholder="请选择父级资源">
+                <abn-tree
+                        tree-data         = "my_data"
+                        tree-control      = "my_tree"
+                        on-select         = "my_tree_handler(branch)"
+                        expand-level      = "2"
+                        initial-selection = "Granny Smith"
+                        icon-leaf         = "fa fa-file-o"
+                        icon-expand       = "fa fa-plus"
+                        icon-collapse     = "fa fa-minus"
+                >
+                </abn-tree>
+            </lion-combotree>
+        </div>
+        <div class="col-md-3">
+            <div class="alert alert-info">{{output}}</div>
         </div>
     </div>
 </div>
