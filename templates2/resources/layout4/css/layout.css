@@ -88,8 +88,7 @@ Page Header
   float: left;
 }
 .page-header.navbar .page-logo .logo-default {
-  margin: 15px 10px 0 30px;
-  width: 140px;
+  margin: 29px 10px 0 10px;
 }
 .page-header.navbar .page-logo .logo-mini {
   display: none;

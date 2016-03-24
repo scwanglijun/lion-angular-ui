@@ -451,89 +451,62 @@ var Layout = function () {
         // 数据从服务端获取，或从指定的JSON文件当中获取
         var menus = [
             {
-                "name": "机构管理", "icon": "jigou",
+                "name": "控制面板", "icon": "quanxianguanlix", "url":"dashboard"
+            },
+            {
+                "name": "系统设置", "icon": "jigou",
                 "subList": [
-                    {"name": "机构录入", "icon": "luru", "url": "divisionEntry"},
-                    {"name": "机构修改", "icon": "xiugai", "url": "divisionModify"},
-                    {"name": "机构迁移", "icon": "shujujiaohuan", "url": "divisionMigration"}
+                    {"name": "用户管理", "icon": "luru", "url": "auditPartyRoleEntry"},
+                    {"name": "部门管理", "icon": "shujujiaohuan", "url": "divisionMigration"},
+                    {"name": "系统信息", "icon": "luru", "url": "departmentEntry"},
+                    {"name": "资源管理", "icon": "xiugai", "url": "departmentModify"},
+                    {"name": "项目属性配置", "icon": "shujujiaohuan", "url": "departmentMigration"},
+                    {"name": "图标管理", "icon": "luru", "url": "talentEntry"}
                 ]
             },
             {
-                "name": "部门管理", "icon": "bumenjiagou",
+                "name": "用户管理", "icon": "bumenjiagou",
                 "subList": [
-                    {"name": "部门录入", "icon": "luru", "url": "departmentEntry"},
-                    {"name": "部门修改", "icon": "xiugai", "url": "departmentModify"},
-                    {"name": "部门查询", "icon": "zhongduanchaxun", "url": "departmentSearch"},
-                    {"name": "部门停用", "icon": "tingyongzhiyuan", "url": "departmentDisable"},
-                    {"name": "部门迁移", "icon": "shujujiaohuan", "url": "departmentMigration"}
+                    {"name": "角色管理", "icon": "zhongduanchaxun", "url": "partyRoleEntry"},
+                    {"name": "用户组管理", "icon": "mianshi", "url": "partyRoleModify"},
+                    {"name": "用户管理", "icon": "shanchu", "url": "partyRoleSearch"}
                 ]
             },
             {
-                "name": "人才管理", "icon": "gaojirencaisousuo",
+                "name": "编码管理", "icon": "bumenjiagou",
                 "subList": [
-                    {"name": "人才招聘", "icon": "luru", "url": "talentEntry"},
-                    {"name": "人才修改", "icon": "renyuandiaodong", "url": "talentModify"},
-                    {"name": "人才查询", "icon": "zhongduanchaxun", "url": "talentSearch"},
-                    {"name": "人才面试", "icon": "mianshi", "url": "talentInterview"},
-                    {"name": "人才删除", "icon": "shanchu", "url": "talentDeleted"}
+                    {"name": "通用编码类型", "icon": "zhongduanchaxun", "url": "partyRoleQuit"},
+                    {"name": "编码列表", "icon": "mianshi", "url": "partyRoleTransfer"}
                 ]
             },
             {
-                "name": "人员管理", "icon": "quanxianshezhi",
+                "name": "DataGrid管理", "icon": "bumenjiagou",
                 "subList": [
-                    {"name": "人员录入", "icon": "luru", "url": "partyRoleEntry"},
-                    {"name": "人员修改", "icon": "renyuandiaodong", "url": "partyRoleModify"},
-                    {"name": "人员查询", "icon": "zhongduanchaxun", "url": "partyRoleSearch"},
-                    {"name": "人员离职", "icon": "lizhi", "url": "partyRoleQuit"},
-                    {"name": "人员调动", "icon": "diaodongshenqing", "url": "partyRoleTransfer"},
-                    {"name": "影像管理", "icon": "yingxiang", "url": "partyRoleImageManage"}
+                    {"name": "DataGrid", "icon": "zhongduanchaxun", "url": "partyRoleImageManage"},
+                    {"name": "DataColumn管理", "icon": "mianshi", "url": "productEntry"}
                 ]
             },
             {
-                "name": "产品管理", "icon": "chanpinku",
+                "name": "系统监控", "icon": "bumenjiagou",
                 "subList": [
-                    {"name": "产品录入", "icon": "luru", "url": "productEntry"},
-                    {"name": "产品修改", "icon": "renyuandiaodong", "url": "productModify"},
-                    {"name": "产品查询", "icon": "zhongduanchaxun", "url": "productSearch"},
-                    {"name": "产品删除", "icon": "shanchu", "url": "productRemove"},
-                    {"name": "期次录入", "icon": "luru", "url": "raisingPeriodEntry"},
-                    {"name": "期次修改", "icon": "renyuandiaodong", "url": "raisingPeriodModify"}
+                    {"name": "用户会话监控", "icon": "zhongduanchaxun", "url": "productModify"},
+                    {"name": "JVM内存监控", "icon": "mianshi", "url": "productSearch"},
+                    {"name": "JVM监控", "icon": "zhongduanchaxun", "url": "productRemove"},
+                    {"name": "JVM线程监控", "icon": "mianshi", "url": "raisingPeriodEntry"},
+                    {"name": "Hibernate监控", "icon": "zhongduanchaxun", "url": "raisingPeriodModify"},
+                    {"name": "数据链接池", "icon": "mianshi", "url": "flowTemplateEntry"},
+                    {"name": "缓存监控", "icon": "zhongduanchaxun", "url": "businessFlowEntry"}
                 ]
             },
             {
-                "name": "业务管理", "icon": "quanxianguanlix",
-                "subList": []
-            },
-            {
-                "name": "薪酬结算", "icon": "quanxianguanlix",
-                "subList": []
-            },
-            {
-                "name": "审核管理", "icon": "quanxianguanlix",
+                "name": "账户管理", "icon": "bumenjiagou",
                 "subList": [
-                    {"name": "审核流程", "icon": "huiyuan", "url": "flowTemplateEntry"},
-                    {"name": "业务审核", "icon": "huiyuan", "url": "businessFlowEntry"},
-                    {"name": "部门审核", "icon": "huiyuan", "url": "auditDepartmentEntry"},
-                    {"name": "工员审核", "icon": "huiyuan", "url": "auditPartyRoleEntry"},
+                    {"name": "个人资料", "icon": "zhongduanchaxun", "url": "talentSearch"},
+                    {"name": "待办事项", "icon": "mianshi", "url": "talentInterview"},
+                    {"name": "通知消息", "icon": "shanchu", "url": "talentDeleted"}
                 ]
-            },
-            {
-                "name": "系统管理", "icon": "quanxianguanlix",
-                "subList": []
-            },
-
-            {
-                "name": "权限管理", "icon": "quanxianguanlix",
-                "subList": [
-                    {"name": "用户管理", "icon": "huiyuan", "url": "securityUserList"},
-                    {"name": "角色管理", "icon": "access_user", "url": "securityRoleList"},
-                    {"name": "资源录入", "icon": "luru", "url": "resourceEntry"},
-                    {"name": "资源修改", "icon": "xiugai", "url": "resourceModify"},
-                    {"name": "字典管理", "icon": "shujuzidianguanli", "url": "securityImList"},
-                    {"name": "示例代码", "icon": "893renwumiaoshu", "url": "formTest"}
-
-                ]
-            }];
+            }
+        ];
 
 
         var ApiRequest = {};
@@ -567,7 +540,7 @@ var Layout = function () {
                         }
                     });
                     //子菜单都为空时,父级菜单不显示
-                    menu["show"] = parentShow;
+                    menu["show"] = true;
                 } else {
                     var isExist = false;
                     angular.forEach(data, function (item) {
@@ -579,6 +552,7 @@ var Layout = function () {
                     menu["show"] = isExist;
                 }
             });
+
             $scope.pageHeaderMenus = menus;
 
             callback.call();
