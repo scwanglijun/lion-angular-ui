@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="wash">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<link href="../../assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+<link href="../../assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
+<link href="../../assets/global/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+<link href="../../assets/global/plugins/angular-bootstrap-nav-tree/abn_tree.css" rel="stylesheet" type="text/css"/>
+
+<script src="../../assets/global/plugins/angularjs/angular.min.js"></script>
+<script src="../../assets/global/plugins/angular-bootstrap-nav-tree/abn_tree_directive.js"></script>
+<script type="text/javascript" src="abntree.js"></script>
+</head>
+<body ng-controller="AbnTestController">
+<div class="container" style="margin-top: 30px;">
+    <div class="row">
+        <div class="col-md-2">Angular Abntree树形</div>
+        <div class="col-md-3">
+            <abn-tree
+                    tree-data         = "my_data"
+                    tree-control      = "my_tree"
+                    on-select         = "my_tree_handler(branch)"
+                    expand-level      = "2"
+                    initial-selection = "Granny Smith"
+                    icon-leaf         = "fa fa-file-o"
+                    icon-expand       = "fa fa-plus"
+                    icon-collapse     = "fa fa-minus"
+            >
+            </abn-tree>
+        </div>
+        <div class="col-md-3">
+            <div class="alert alert-info">{{output}}</div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
