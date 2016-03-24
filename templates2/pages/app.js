@@ -516,7 +516,7 @@ function StateConfigController($stateProvider, $urlRouterProvider) {
                 templateUrl: "db/db-form-grid.html"
             }
         },
-        data: {pageTitle: '人员录入', pageSubTitle: '人员管理|人员录入——人员信息维护录入'},
+        data: {pageTitle: 'Role', pageSubTitle: '用户管理|角色管理'},
         resolve: {
             loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
                 return $ocLazyLoad.load([{
@@ -572,7 +572,7 @@ function StateConfigController($stateProvider, $urlRouterProvider) {
                 templateUrl: "db/db-form-grid.html"
             }
         },
-        data: {pageTitle: '人员离职', pageSubTitle: '人员管理|人员离职——人员离开辞职变动'},
+        data: {pageTitle: 'Role', pageSubTitle: '用户管理|角色管理'},
         resolve: {
             loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
                 return $ocLazyLoad.load(['views/role/partyRoleQuitCtrl.js',

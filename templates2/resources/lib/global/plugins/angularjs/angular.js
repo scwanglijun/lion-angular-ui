@@ -17034,7 +17034,7 @@ function $SceDelegateProvider() {
  * `<div ng-bind-html="'<b>implicitly trusted</b>'"></div>`) just works.
  *
  * Additionally, `a[href]` and `img[src]` automatically sanitize their URLs and do not pass them
- * through {@link ng.$sce#getTrusted $sce.getTrusted}.  SCE doesn't play a role here.
+ * through {@link ng.$sce#getTrusted $sce.getTrusted}.  SCE doesn't play a roles.json here.
  *
  * The included {@link ng.$sceDelegate $sceDelegate} comes with sane defaults to allow you to load
  * templates in `ng-include` from your application's domain without having to even know about SCE.
@@ -20419,7 +20419,7 @@ function FormController(element, attrs, $scope, $animate, $interpolate) {
  *
  * # Submitting a form and preventing the default action
  *
- * Since the role of forms in client-side Angular applications is different than in classical
+ * Since the roles.json of forms in client-side Angular applications is different than in classical
  * roundtrip apps, it is desirable for the browser not to translate the form submission into a full
  * page reload that sends the data to the server. Instead some javascript logic should be triggered
  * to handle the form submission in an application-specific way.
@@ -20690,7 +20690,7 @@ var inputType = {
              <input type="text" name="input" ng-model="example.text"
                     ng-pattern="example.word" required ng-trim="false">
            </label>
-           <div role="alert">
+           <div roles.json="alert">
              <span class="error" ng-show="myForm.input.$error.required">
                Required!</span>
              <span class="error" ng-show="myForm.input.$error.pattern">
@@ -20785,7 +20785,7 @@ var inputType = {
           <label for="exampleInput">Pick a date in 2013:</label>
           <input type="date" id="exampleInput" name="input" ng-model="example.value"
               placeholder="yyyy-MM-dd" min="2013-01-01" max="2013-12-31" required />
-          <div role="alert">
+          <div roles.json="alert">
             <span class="error" ng-show="myForm.input.$error.required">
                 Required!</span>
             <span class="error" ng-show="myForm.input.$error.date">
@@ -20888,7 +20888,7 @@ var inputType = {
         <label for="exampleInput">Pick a date between in 2013:</label>
         <input type="datetime-local" id="exampleInput" name="input" ng-model="example.value"
             placeholder="yyyy-MM-ddTHH:mm:ss" min="2001-01-01T00:00:00" max="2013-12-31T00:00:00" required />
-        <div role="alert">
+        <div roles.json="alert">
           <span class="error" ng-show="myForm.input.$error.required">
               Required!</span>
           <span class="error" ng-show="myForm.input.$error.datetimelocal">
@@ -20992,7 +20992,7 @@ var inputType = {
         <label for="exampleInput">Pick a between 8am and 5pm:</label>
         <input type="time" id="exampleInput" name="input" ng-model="example.value"
             placeholder="HH:mm:ss" min="08:00:00" max="17:00:00" required />
-        <div role="alert">
+        <div roles.json="alert">
           <span class="error" ng-show="myForm.input.$error.required">
               Required!</span>
           <span class="error" ng-show="myForm.input.$error.time">
@@ -21097,7 +21097,7 @@ var inputType = {
                  placeholder="YYYY-W##" min="2012-W32"
                  max="2013-W52" required />
         </label>
-        <div role="alert">
+        <div roles.json="alert">
           <span class="error" ng-show="myForm.input.$error.required">
               Required!</span>
           <span class="error" ng-show="myForm.input.$error.week">
@@ -21201,7 +21201,7 @@ var inputType = {
        <label for="exampleInput">Pick a month in 2013:</label>
        <input id="exampleInput" type="month" name="input" ng-model="example.value"
           placeholder="yyyy-MM" min="2013-01" max="2013-12" required />
-       <div role="alert">
+       <div roles.json="alert">
          <span class="error" ng-show="myForm.input.$error.required">
             Required!</span>
          <span class="error" ng-show="myForm.input.$error.month">
@@ -21321,7 +21321,7 @@ var inputType = {
              <input type="number" name="input" ng-model="example.value"
                     min="0" max="99" required>
           </label>
-           <div role="alert">
+           <div roles.json="alert">
              <span class="error" ng-show="myForm.input.$error.required">
                Required!</span>
              <span class="error" ng-show="myForm.input.$error.number">
@@ -21418,7 +21418,7 @@ var inputType = {
            <label>URL:
              <input type="url" name="input" ng-model="url.text" required>
            <label>
-           <div role="alert">
+           <div roles.json="alert">
              <span class="error" ng-show="myForm.input.$error.required">
                Required!</span>
              <span class="error" ng-show="myForm.input.$error.url">
@@ -21517,7 +21517,7 @@ var inputType = {
              <label>Email:
                <input type="email" name="input" ng-model="email.text" required>
              </label>
-             <div role="alert">
+             <div roles.json="alert">
                <span class="error" ng-show="myForm.input.$error.required">
                  Required!</span>
                <span class="error" ng-show="myForm.input.$error.email">
@@ -22196,7 +22196,7 @@ function checkboxInputType(scope, element, attr, ctrl, $sniffer, $browser, $filt
               User name:
               <input type="text" name="userName" ng-model="user.name" required>
            </label>
-           <div role="alert">
+           <div roles.json="alert">
              <span class="error" ng-show="myForm.userName.$error.required">
               Required!</span>
            </div>
@@ -22205,7 +22205,7 @@ function checkboxInputType(scope, element, attr, ctrl, $sniffer, $browser, $filt
               <input type="text" name="lastName" ng-model="user.last"
               ng-minlength="3" ng-maxlength="10">
            </label>
-           <div role="alert">
+           <div roles.json="alert">
              <span class="error" ng-show="myForm.lastName.$error.minlength">
                Too short!</span>
              <span class="error" ng-show="myForm.lastName.$error.maxlength">
@@ -24555,7 +24555,7 @@ var ngInitDirective = ngDirective({
  *   <file name="index.html">
  *    <form name="myForm" ng-controller="ExampleController">
  *      <label>List: <input name="namesInput" ng-model="names" ng-list required></label>
- *      <span role="alert">
+ *      <span roles.json="alert">
  *        <span class="error" ng-show="myForm.namesInput.$error.required">
  *        Required!</span>
  *      </span>

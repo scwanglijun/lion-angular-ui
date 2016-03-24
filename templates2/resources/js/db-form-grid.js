@@ -227,6 +227,7 @@ dbFormGridDirectives.directive('dbFormGrid', ['dbUtils', function (dbUtils) {
                     pageSize: $scope.dbFormGrid.page.pageSize
                 };
                 dbUtils.post($scope.dbFormGrid.options.grid.settings.transCode, queryParams, function (data) {
+                    console.log(data);
                     //获取每行数据，并调用format方法进行处理，最后赋值给$scope.dbFormGrid.rows
                     var rows = data.content;
                     for (var i in rows) {
@@ -234,8 +235,6 @@ dbFormGridDirectives.directive('dbFormGrid', ['dbUtils', function (dbUtils) {
                         for (var j in $scope.dbFormGrid.options.grid.header) {
                             var header = $scope.dbFormGrid.options.grid.header[j];
                             var value = (row[header.field] || "");
-
-
                             if (!angular.isUndefined($scope.dbFormGrid.events.grid.fieldEvents)) {
                                 var colorEvent = $scope.dbFormGrid.events.grid.fieldEvents[header.field + 'Color'];
                                 colorEvent ? header.colorEvent = colorEvent : null;

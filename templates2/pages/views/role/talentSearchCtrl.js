@@ -82,7 +82,7 @@ function TalentSearchCtrl($scope, $modal) {
     function viewDetail(source) {
         $modal.open({
             animation: true,
-            templateUrl: 'views/role/talentDetailView.html',
+            templateUrl: 'views/roles.json/talentDetailView.html',
             controller: 'talentDetailCtrl',
             size: "lg",
             backdrop: "static",

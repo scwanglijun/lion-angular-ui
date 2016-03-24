@@ -13,27 +13,23 @@ function PartyRoleQuitCtrl($scope, $modal, dbUtils) {
                 cols: 2
             },
             fields: [
-                {name: "organizationName", label: "直属机构/部门", type: "orgTree", required: true, placeholder: "直属机构/部门", readonly: true, labelCols: "3"}
+                {name: "organizationName", label: "角色名称", type: "text", required: true, placeholder: "角色名称", readonly: true, labelCols: "3"}
             ]
         },
         grid: {
             settings: {
-                transCode: "partyRoleQuitPage",
+                transCode: "../data/roles.json",
                 autoLoad: true,
                 page: {pageSize: 10},
                 showCheckBox: true
             },
             header: [
-                {name: "人员代码", width: "10%", field: "partyNo"},
-                {name: "人员名称", width: "10%", field: "partyName"},
-                {name: "机构名称", width: "10%", field: "organizationName"},
-                {name: "部门名称", width: "10%", field: "departmentName"},
-                {name: "业务类型", width: "10%", field: "businessType"},
-                {name: "证件类型", width: "10%", field: "certificateType"},
-                {name: "证件号码", width: "10%", field: "certificateNo"},
-                {name: "人员状态", width: "10%", field: "status"},
-                {name: "审核状态", width: "8%", field: "auditStatus"},
-                {name: "创建时间", width: "12%", field: "firstInsert"}
+                {name: "角色名称(英文)", width: "18%", field: "partyNo"},
+                {name: "角色名称(中文)", width: "18%", field: "partyName"},
+                {name: "描述", width: "18%", field: "organizationName"},
+                {name: "可编辑", width: "10%", field: "departmentName"},
+                {name: "创建时间", width: "18%", field: "businessType"},
+                {name: "更新时间", width: "18%", field: "certificateType"},
             ],
             rowOperation: {show: false}
         }
@@ -49,22 +45,16 @@ function PartyRoleQuitCtrl($scope, $modal, dbUtils) {
                 },
                 "statusColor": function (value, currentRecord) {
                     var color = "green";
-                    if (value == "离职") {
+                    if (value == "删除") {
                         color = "#B0B6C3"
                     } else if (value == "暂停") {
                         color = "red"
                     }
                     return color;
                 },
-                "auditStatusClick": function (currentRecord) {
-                    auditStatusHistory(currentRecord);
-                },
-                "partyNameClick": function (currentRecord) {
-                    viewPartyRoleDetail(currentRecord);
-                }
             },
             operationEvents: [{
-                name: "离职", class: "btn-danger", icon: "lizhi", click: function () {
+                name: "删除", class: "btn-danger", icon: "shanchu", click: function () {
                     quit();
                 }
             }]
@@ -83,7 +73,7 @@ function PartyRoleQuitCtrl($scope, $modal, dbUtils) {
 
 
     /**
-     * 离职操作
+     * 删除操作
      */
     function quit() {
         var selectRows = $scope.dbFormGrid.getAllSelectRows();
@@ -91,16 +81,16 @@ function PartyRoleQuitCtrl($scope, $modal, dbUtils) {
             return;
         }
         var ids = dbUtils.getFieldArray(selectRows, "id");
-        dbUtils.confirm("确定要对所选人员进行<span style='color: red'>离职</span>操作?", function () {
+        dbUtils.confirm("确定要对所选人员进行<span style='color: red'>删除</span>操作?", function () {
             dbUtils.post('partyRoleQuit', {'ids': ids}, function (data) {
                 if (data) {
-                    dbUtils.error(data + "以上渠道维护人员不能离职，请先迁移其所辖的代理机构！")
+                    dbUtils.error(data + "以上渠道维护人员不能删除，请先迁移其所辖的代理机构！")
                 } else {
-                    dbUtils.success("渠道维护人员离职成功！!");
+                    dbUtils.success("渠道维护人员删除成功！!");
                 }
                 $scope.dbFormGrid.reLoadData();
             }, function (error) {
-                dbUtils.error("人员离职处理异常!" + error);
+                dbUtils.error("人员删除处理异常!" + error);
             });
         });
     }
@@ -112,7 +102,7 @@ function PartyRoleQuitCtrl($scope, $modal, dbUtils) {
     function auditStatusHistory(currentRecord) {
         $modal.open({
             animation: true,
-            templateUrl: 'views/role/partNoAuditHistoryView.html',
+            templateUrl: 'views/roles.json/partNoAuditHistoryView.html',
             controller: 'partNoAuditHistoryCtrl',
             size: "lg",
             backdrop: "static",
@@ -133,7 +123,7 @@ function PartyRoleQuitCtrl($scope, $modal, dbUtils) {
         dbUtils.post("partyRoleQuitGet", {id: source['id'], partyId: source['partyId'], businessType: source['businessType']}, function (data) {
             var instance = $modal.open({
                 animation: true,
-                templateUrl: 'views/role/partyRoleDetailView.html',
+                templateUrl: 'views/roles.json/partyRoleDetailView.html',
                 controller: 'partyRoleDetailCtrl',
                 size: "lg",
                 backdrop: "static",

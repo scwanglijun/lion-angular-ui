@@ -51,7 +51,7 @@ function PartyRoleEditorCtrl($scope, $modalInstance, $modal, dbUtils, source) {
             "referralNameClick": function () {
                 var instance = $modal.open({
                     animation: true,
-                    templateUrl: 'views/role/selectPartyRoleView.html',
+                    templateUrl: 'views/roles.json/selectPartyRoleView.html',
                     controller: 'selectPartyRoleCtrl',
                     size: "md",
                     backdrop: "static"

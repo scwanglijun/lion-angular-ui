@@ -20,7 +20,7 @@ function DbImService($resource, $http) {
         var ApiRequest = {};
         ApiRequest["transCode"] = transcode;
         ApiRequest["requestBody"] = {"typeCode": typeCode};
-        $http.post("../api.do", ApiRequest).success(function (data, status, headers, config) {
+        $http.post("../data/", ApiRequest).success(function (data, status, headers, config) {
             var dicts = [];
             angular.forEach(data.responseBody, function (dict) {
                 dicts.push({"name": dict.nameCn, "value": dict.code});
@@ -257,7 +257,8 @@ function DialogUtil($modal, $http, $window, toaster) {
             var ApiRequest = {};
             ApiRequest["transCode"] = transCode;
             ApiRequest["requestBody"] = reqBody;
-            $http.post("../api.do", ApiRequest).success(function (data, status, headers, config) {
+            $http.post(transCode, ApiRequest).success(function (data, status, headers, config) {
+                //console.log(data.responseBody);
                 Metronic.stopPageLoading();
                 if (data.status == "401") {//用户未登录
                     $window.location.href = "login.html";

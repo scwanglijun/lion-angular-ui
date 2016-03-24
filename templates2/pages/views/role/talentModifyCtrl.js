@@ -80,7 +80,7 @@ function TalentModifyCtrl($scope, $modal) {
     function openModal(source) {
         var instance = $modal.open({
             animation: true,
-            templateUrl: 'views/role/talentEditorView.html',
+            templateUrl: 'views/roles.json/talentEditorView.html',
             controller: 'talentEditorCtrl',
             size: "lg",
             backdrop: "static",

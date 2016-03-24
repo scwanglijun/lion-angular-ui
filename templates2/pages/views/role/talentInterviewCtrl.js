@@ -92,7 +92,7 @@ function TalentInterviewCtrl($scope, $modal) {
     function viewDetail(source) {
         $modal.open({
             animation: true,
-            templateUrl: 'views/role/talentDetailView.html',
+            templateUrl: 'views/roles.json/talentDetailView.html',
             controller: 'talentDetailCtrl',
             size: "lg",
             backdrop: "static",
@@ -130,7 +130,7 @@ function TalentInterviewCtrl($scope, $modal) {
     function interview(record){
         var instance = $modal.open({
             animation: true,
-            templateUrl: 'views/role/talentInterviewView.html',
+            templateUrl: 'views/roles.json/talentInterviewView.html',
             controller: 'talentInterviewViewCtrl',
             size: "lg",
             backdrop: "static",

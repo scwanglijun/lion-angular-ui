@@ -84,7 +84,7 @@ function TalentEntryCtrl($scope, $modal) {
     function openModal(source) {
         var instance = $modal.open({
             animation: true,
-            templateUrl: 'views/role/talentEditorView.html',
+            templateUrl: 'views/roles.json/talentEditorView.html',
             controller: 'talentEditorCtrl',
             size: "lg",
             backdrop: "static",
@@ -107,7 +107,7 @@ function TalentEntryCtrl($scope, $modal) {
     function viewDetail(source) {
         $modal.open({
             animation: true,
-            templateUrl: 'views/role/talentDetailView.html',
+            templateUrl: 'views/roles.json/talentDetailView.html',
             controller: 'talentDetailCtrl',
             size: "lg",
             backdrop: "static",

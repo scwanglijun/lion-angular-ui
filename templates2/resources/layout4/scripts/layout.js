@@ -456,7 +456,6 @@ var Layout = function () {
             {
                 "name": "系统设置", "icon": "jigou",
                 "subList": [
-                    {"name": "用户管理", "icon": "luru", "url": "auditPartyRoleEntry"},
                     {"name": "部门管理", "icon": "shujujiaohuan", "url": "divisionMigration"},
                     {"name": "系统信息", "icon": "luru", "url": "departmentEntry"},
                     {"name": "资源管理", "icon": "xiugai", "url": "departmentModify"},
@@ -467,7 +466,7 @@ var Layout = function () {
             {
                 "name": "用户管理", "icon": "bumenjiagou",
                 "subList": [
-                    {"name": "角色管理", "icon": "zhongduanchaxun", "url": "partyRoleEntry"},
+                    {"name": "角色管理", "icon": "zhongduanchaxun", "url": "partyRoleQuit"},
                     {"name": "用户组管理", "icon": "mianshi", "url": "partyRoleModify"},
                     {"name": "用户管理", "icon": "shanchu", "url": "partyRoleSearch"}
                 ]
@@ -512,7 +511,7 @@ var Layout = function () {
         var ApiRequest = {};
         ApiRequest["transCode"] = "9124";
         ApiRequest["requestBody"] = {"no": "no"};
-        $http.post("../menus.json", ApiRequest).success(function (data, status, headers, config) {
+        $http.post("../data/menus.json", ApiRequest).success(function (data, status, headers, config) {
             if (data.status == 401) {//用户未登录
                 $window.location.href = "login.html";
             } else if (data.status == 403) {

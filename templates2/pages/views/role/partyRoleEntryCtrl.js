@@ -89,7 +89,7 @@ function PartyRoleEntryCtrl($scope, $modal, dbUtils) {
             dbUtils.post("partyRoleGet", {id: source['id'], partyId: source['partyId'], businessType: source['businessType']}, function (data) {
                 var instance = $modal.open({
                     animation: true,
-                    templateUrl: 'views/role/partyRoleEditorView.html',
+                    templateUrl: 'views/roles.json/partyRoleEditorView.html',
                     controller: 'partyRoleEditorCtrl',
                     size: "lg",
                     backdrop: "static",
@@ -106,7 +106,7 @@ function PartyRoleEntryCtrl($scope, $modal, dbUtils) {
         } else {
             var instance = $modal.open({
                 animation: true,
-                templateUrl: 'views/role/partyRoleEditorView.html',
+                templateUrl: 'views/roles.json/partyRoleEditorView.html',
                 controller: 'partyRoleEditorCtrl',
                 size: "lg",
                 backdrop: "static",
@@ -132,7 +132,7 @@ function PartyRoleEntryCtrl($scope, $modal, dbUtils) {
         dbUtils.post("partyRoleGet", {id: source['id'], partyId: source['partyId'], businessType: source['businessType']}, function (data) {
             var instance = $modal.open({
                 animation: true,
-                templateUrl: 'views/role/partyRoleDetailView.html',
+                templateUrl: 'views/roles.json/partyRoleDetailView.html',
                 controller: 'partyRoleDetailCtrl',
                 size: "lg",
                 backdrop: "static",
@@ -156,7 +156,7 @@ function PartyRoleEntryCtrl($scope, $modal, dbUtils) {
     function auditStatusHistory(currentRecord) {
         $modal.open({
             animation: true,
-            templateUrl: 'views/role/partyRoleNoAuditHistoryView.html',
+            templateUrl: 'views/roles.json/partyRoleNoAuditHistoryView.html',
             controller: 'partNoAuditHistoryCtrl',
             size: "lg",
             backdrop: "static",

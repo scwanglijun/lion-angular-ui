@@ -85,7 +85,7 @@ function PartyRoleModifyCtrl($scope, $modal, dbUtils) {
         dbUtils.post("partyRoleModifyGet", {id: source['id'], partyId: source['partyId'], businessType: source['businessType']}, function (data) {
             var instance = $modal.open({
                 animation: true,
-                templateUrl: 'views/role/partyRoleEditorView.html',
+                templateUrl: 'views/roles.json/partyRoleEditorView.html',
                 controller: 'partyRoleEditorCtrl',
                 size: "lg",
                 backdrop: "static",
@@ -109,7 +109,7 @@ function PartyRoleModifyCtrl($scope, $modal, dbUtils) {
     function auditStatusHistory(currentRecord) {
         $modal.open({
             animation: true,
-            templateUrl: 'views/role/partyRoleNoAuditHistoryView.html',
+            templateUrl: 'views/roles.json/partyRoleNoAuditHistoryView.html',
             controller: 'partyRoleNoAuditHistoryCtrl',
             size: "lg",
             backdrop: "static",

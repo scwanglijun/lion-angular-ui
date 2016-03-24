@@ -1,12 +1,11 @@
 [
   {"url":"dashboard"},
-  {"url": "auditPartyRoleEntry"},
   {"url": "divisionMigration"},
   {"url": "departmentEntry"},
   {"url": "departmentModify"},
   {"url": "departmentMigration"},
   {"url": "talentEntry"},
-  {"url": "partyRoleEntry"},
+  {"url": "partyRoleQuit"},
   {"url": "partyRoleModify"},
   {"url": "partyRoleSearch"},
   {"url": "partyRoleQuit"},
