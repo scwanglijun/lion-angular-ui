@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<link href="../../assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+<link href="../../assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
+<link href="../../assets/global/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+
+<script src="../../assets/global/plugins/angularjs/angular.min.js"></script>
+<script src="../../assets/vendor/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script type="text/javascript" src="accordion.js"></script>
+</head>
+<body>
+<div class="row">
+    <div class="col-lg-6">
+        <!-- accordion -->
+        <div ng-controller="AccordionDemoCtrl">
+            <accordion close-others="oneAtATime">
+                <accordion-group heading="Accordion Header, initially expanded" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+                    <p>
+                        <button class="btn btn-default btn-sm" ng-click="status.open = !status.open">Toggle last panel</button>
+                        <button class="btn btn-default btn-sm" ng-click="status.isFirstDisabled = ! status.isFirstDisabled">Enable / Disable first panel</button>
+                    </p>
+                </accordion-group>
+                <accordion-group heading="{{group.title}}" ng-repeat="group in groups">
+                    {{group.content}}
+                </accordion-group>
+                <accordion-group heading="Dynamic body content">
+                    <p>The body of the accordion group grows to fit the contents</p>
+                    <button class="btn btn-default btn-sm" ng-click="addItem()">Add Item</button>
+                    <div class="list-group m-t">
+                        <div ng-repeat="item in items" class="list-group-item">{{item}}</div>
+                    </div>
+                </accordion-group>
+                <accordion-group is-open="status.open" class="b-info">
+                    <accordion-heading>
+                        I can have markup, too! <i class="pull-right fa fa-angle-right" ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
+                    </accordion-heading>
+                    This is just some content to illustrate fancy headings.
+                </accordion-group>
+            </accordion>
+        </div>
+        <!-- / accordion -->
+    </div>
+</div>
+</body>
+</html>
