@@ -1,0 +1,56 @@
+<form name="dataForm" novalidate ng-submit="submitDialogForm(dataForm.$valid)">
+    <div class="modal-body form-horizontal form">
+        <div class="form-body portlet light">
+            <div class="portlet-title">
+                <div class="caption font-green-sharp">
+                    <i class="icon-access_user iconfont font-green-sharp"></i>
+                    <span class="caption-subject bold uppercase">{{editData!=null?(formDisabled?'查看':'编辑'):'添加'}}角色</span>
+                </div>
+                <div class="tools">
+                    <i class="iconfont icon-guanbi" ng-click="cancel()"></i>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="form-body">
+                    <div class="row">
+                        <div class="form-group" ng-class="{ 'has-error' : dataForm.code.$invalid && submited}">
+                            <label class="control-label col-md-3"><span class="required">  * </span>角色代码</label>
+
+                            <div class="col-md-8">
+                                <input ng-model="data.code" name="code" db-validator="required" placeholder="请输入名称" type="text" class="form-control" ng-disabled="formDisabled">
+                                <span class="help-block" ng-show="dataForm.code.$error.custom && submited">{{$dbForm.code.msg}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group" ng-class="{ 'has-error' : dataForm.name.$invalid && submited}">
+                            <label class="control-label col-md-3"><span class="required">  * </span>角色名称</label>
+
+                            <div class="col-md-8">
+                                <input ng-model="data.name" name="name" db-validator="required" placeholder="请输入名称" type="text" class="form-control" ng-disabled="formDisabled">
+                                <span class="help-block" ng-show="dataForm.name.$error.custom && submited">{{$dbForm.name.msg}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">备注</label>
+
+                            <div class="col-md-8">
+                                <textarea ng-model="data.remark" placeholder="备注内容" class="form-control" ng-disabled="formDisabled" style="resize: none"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="margin-bottom: 0px;">
+                <button class="btn " ng-class="{'btn-primary':formDisabled,'btn-danger':!formDisabled}" ng-show="editData"
+                        type="button" ng-click="changeEdit()">
+                    {{formDisabled?'编辑':'取消'}}
+                </button>
+                <button class="btn btn-primary" type="submit" ng-show="!editData||!formDisabled">确定</button>
+                <button class="btn btn-warning" type="button" ng-click="cancel()">关闭</button>
+            </div>
+        </div>
+    </div>
+</form>

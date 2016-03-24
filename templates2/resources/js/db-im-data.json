@@ -1,0 +1,703 @@
+{
+  "resourceType": [
+    {
+      "name": "全局资源",
+      "value": "global"
+    },
+    {
+      "name": "业务资源",
+      "value": "business"
+    }
+  ],
+  "businessType": [
+    {
+      "name": "大客户",
+      "value": "大客户"
+    },
+    {
+      "name": "直营",
+      "value": "直营"
+    },
+    {
+      "name": "客户经理",
+      "value": "客户经理"
+    },
+    {
+      "name": "兼职",
+      "value": "兼职"
+    },
+    {
+      "name": "内勤",
+      "value": "内勤"
+    }
+  ],
+  "gender": [
+    {
+      "name": "男",
+      "value": "男"
+    },
+    {
+      "name": "女",
+      "value": "女"
+    }
+  ],
+  "maritalStatus": [
+    {
+      "name": "未婚",
+      "value": "未婚"
+    },
+    {
+      "name": "已婚",
+      "value": "已婚"
+    },
+    {
+      "name": "丧偶",
+      "value": "丧偶"
+    },
+    {
+      "name": "离异",
+      "value": "离异"
+    }
+  ],
+  "phoneType": [
+    {
+      "name": "住宅",
+      "value": "住宅"
+    },
+    {
+      "name": "工作",
+      "value": "工作"
+    },
+    {
+      "name": "手机",
+      "value": "手机"
+    },
+    {
+      "name": "传真",
+      "value": "传真"
+    }
+  ],
+  "certificateType": [
+    {
+      "name": "身份证",
+      "value": "身份证"
+    },
+    {
+      "name": "驾驶证",
+      "value": "驾驶证"
+    },
+    {
+      "name": "护照",
+      "value": "护照"
+    }
+  ],
+  "addressType": [
+    {
+      "name": "住宅",
+      "value": "住宅"
+    },
+    {
+      "name": "工作",
+      "value": "工作"
+    },
+    {
+      "name": "其他",
+      "value": "其他"
+    }
+  ],
+  "accountType": [
+    {
+      "name": "本地城镇",
+      "value": "本地城镇"
+    },
+    {
+      "name": "本地农村",
+      "value": "本地农村"
+    },
+    {
+      "name": "外地城镇",
+      "value": "外地城镇"
+    },
+    {
+      "name": "外地农村",
+      "value": "外地农村"
+    }
+  ],
+  "politicalStatus": [
+    {
+      "name": "共青团员",
+      "value": "共青团员"
+    },
+    {
+      "name": "预备党员",
+      "value": "预备党员"
+    },
+    {
+      "name": "正式党员",
+      "value": "正式党员"
+    }
+  ],
+  "educationalHistory": [
+    {
+      "name": "初中",
+      "value": "初中"
+    },
+    {
+      "name": "高中",
+      "value": "高中"
+    },
+    {
+      "name": "中专",
+      "value": "中专"
+    },
+    {
+      "name": "大专",
+      "value": "大专"
+    },
+    {
+      "name": "本科",
+      "value": "本科"
+    },
+    {
+      "name": "硕士",
+      "value": "硕士"
+    },
+    {
+      "name": "博士",
+      "value": "博士"
+    },
+    {
+      "name": "其他",
+      "value": "其他"
+    }
+  ],
+  "staffingLevel": [
+    {
+      "name": "一星营业部经理",
+      "value": "一星营业部经理"
+    },
+    {
+      "name": "二星营业部经理",
+      "value": "二星营业部经理"
+    },
+    {
+      "name": "三星营业部经理",
+      "value": "三星营业部经理"
+    },
+    {
+      "name": "四星营业部经理",
+      "value": "四星营业部经理"
+    },
+    {
+      "name": "五星营业部经理",
+      "value": "五星营业部经理"
+    },
+    {
+      "name": "理财经理",
+      "value": "理财经理"
+    },
+    {
+      "name": "高级理财经理",
+      "value": "高级理财经理"
+    },
+    {
+      "name": "资深理财经理",
+      "value": "资深理财经理"
+    },
+    {
+      "name": "理财师",
+      "value": "理财师"
+    },
+    {
+      "name": "高级理财师",
+      "value": "高级理财师"
+    },
+    {
+      "name": "资深理财师",
+      "value": "资深理财师"
+    },
+    {
+      "name": "首席理财师",
+      "value": "首席理财师"
+    },
+    {
+      "name": "私人银行家",
+      "value": "私人银行家"
+    }
+  ],
+  "agencyData": [
+    {
+      "name": "代理机构(一)",
+      "value": "代理机构(一)"
+    },
+    {
+      "name": "代理机构(二)",
+      "value": "代理机构(二)"
+    },
+    {
+      "name": "代理机构(三)",
+      "value": "代理机构(三)"
+    },
+    {
+      "name": "代理机构(四)",
+      "value": "代理机构(四)"
+    },
+    {
+      "name": "代理机构(五)",
+      "value": "代理机构(五)"
+    }
+  ],
+  "nation": [
+    {
+      "name": "汉族",
+      "value": "汉族"
+    },
+    {
+      "name": "壮族",
+      "value": "壮族"
+    },
+    {
+      "name": "满族",
+      "value": "满族"
+    },
+    {
+      "name": "回族",
+      "value": "回族"
+    },
+    {
+      "name": "苗族",
+      "value": "苗族"
+    },
+    {
+      "name": "维吾尔族",
+      "value": "维吾尔族"
+    },
+    {
+      "name": "土家族",
+      "value": "土家族"
+    },
+    {
+      "name": "彝族",
+      "value": "彝族"
+    },
+    {
+      "name": "蒙古族",
+      "value": "蒙古族"
+    },
+    {
+      "name": "藏族",
+      "value": "藏族"
+    },
+    {
+      "name": "布依族",
+      "value": "布依族"
+    },
+    {
+      "name": "侗族",
+      "value": "侗族"
+    },
+    {
+      "name": "瑶族",
+      "value": "瑶族"
+    },
+    {
+      "name": "朝鲜族",
+      "value": "朝鲜族"
+    },
+    {
+      "name": "白族",
+      "value": "白族"
+    },
+    {
+      "name": "哈尼族",
+      "value": "哈尼族"
+    },
+    {
+      "name": "哈萨克族",
+      "value": "哈萨克族"
+    },
+    {
+      "name": "黎族",
+      "value": "黎族"
+    },
+    {
+      "name": "傣族",
+      "value": "傣族"
+    },
+    {
+      "name": "畲族",
+      "value": "畲族"
+    },
+    {
+      "name": "傈僳族",
+      "value": "傈僳族"
+    },
+    {
+      "name": "仡佬族",
+      "value": "仡佬族"
+    },
+    {
+      "name": "东乡族",
+      "value": "东乡族"
+    },
+    {
+      "name": "高山族",
+      "value": "高山族"
+    },
+    {
+      "name": "拉祜族",
+      "value": "拉祜族"
+    },
+    {
+      "name": "水族",
+      "value": "水族"
+    },
+    {
+      "name": "佤族",
+      "value": "佤族"
+    },
+    {
+      "name": "纳西族",
+      "value": "纳西族"
+    },
+    {
+      "name": "羌族",
+      "value": "羌族"
+    },
+    {
+      "name": "土族",
+      "value": "土族"
+    },
+    {
+      "name": "仫佬族",
+      "value": "仫佬族"
+    },
+    {
+      "name": "锡伯族",
+      "value": "锡伯族"
+    },
+    {
+      "name": "柯尔克孜族",
+      "value": "柯尔克孜族"
+    },
+    {
+      "name": "达斡尔族",
+      "value": "达斡尔族"
+    },
+    {
+      "name": "景颇族",
+      "value": "景颇族"
+    },
+    {
+      "name": "毛南族",
+      "value": "毛南族"
+    },
+    {
+      "name": "撒拉族",
+      "value": "撒拉族"
+    },
+    {
+      "name": "布朗族",
+      "value": "布朗族"
+    },
+    {
+      "name": "塔吉克族",
+      "value": "塔吉克族"
+    },
+    {
+      "name": "阿昌族",
+      "value": "阿昌族"
+    },
+    {
+      "name": "普米族",
+      "value": "普米族"
+    },
+    {
+      "name": "鄂温克族",
+      "value": "鄂温克族"
+    },
+    {
+      "name": "怒族",
+      "value": "怒族"
+    },
+    {
+      "name": "京族",
+      "value": "京族"
+    },
+    {
+      "name": "基诺族",
+      "value": "基诺族"
+    },
+    {
+      "name": "德昂族",
+      "value": "德昂族"
+    },
+    {
+      "name": "保安族",
+      "value": "保安族"
+    },
+    {
+      "name": "俄罗斯族",
+      "value": "俄罗斯族"
+    },
+    {
+      "name": "裕固族",
+      "value": "裕固族"
+    },
+    {
+      "name": "乌孜别克族",
+      "value": "乌孜别克族"
+    },
+    {
+      "name": "门巴族",
+      "value": "门巴族"
+    },
+    {
+      "name": "鄂伦春族",
+      "value": "鄂伦春族"
+    },
+    {
+      "name": "独龙族",
+      "value": "独龙族"
+    },
+    {
+      "name": "塔塔尔族",
+      "value": "塔塔尔族"
+    },
+    {
+      "name": "赫哲族",
+      "value": "赫哲族"
+    },
+    {
+      "name": "珞巴族",
+      "value": "珞巴族"
+    }
+  ],
+  "talentStatus": [
+    {
+      "name": "待面试",
+      "value": "待面试"
+    },
+    {
+      "name": "待审核",
+      "value": "待审核"
+    },
+    {
+      "name": "待入职",
+      "value": "待入职"
+    },
+    {
+      "name": "已入职",
+      "value": "已入职"
+    },
+    {
+      "name": "储备",
+      "value": "储备"
+    }
+  ],
+  "experienceType": [
+    {
+      "name": "学校",
+      "value": "学校"
+    },
+    {
+      "name": "工作单位",
+      "value": "工作单位"
+    },
+    {
+      "name": "专业证书",
+      "value": "专业证书"
+    }
+  ],
+  "relationType": [
+    {
+      "name": "父亲",
+      "value": "父亲"
+    },
+    {
+      "name": "母亲",
+      "value": "母亲"
+    },
+    {
+      "name": "配偶",
+      "value": "配偶"
+    },
+    {
+      "name": "子女",
+      "value": "子女"
+    },
+    {
+      "name": "其他",
+      "value": "其他"
+    }
+  ],
+  "orgLevel": [
+    {
+      "name": "行政地区",
+      "value": "行政地区"
+    },
+    {
+      "name": "一级机构",
+      "value": "一级机构"
+    },
+    {
+      "name": "二级机构",
+      "value": "二级机构"
+    },
+    {
+      "name": "三级机构",
+      "value": "三级机构"
+    }
+  ],
+  "orgType": [
+    {
+      "name": "分公司",
+      "value": "分公司"
+    },
+    {
+      "name": "支公司",
+      "value": "支公司"
+    },
+    {
+      "name": "行政地区",
+      "value": "行政地区"
+    }
+  ],
+  "deptType": [
+    {
+      "name": "行政部门",
+      "value": "INSIDE"
+    },
+    {
+      "name": "销售部",
+      "value": "OUTSIDE"
+    }
+  ],
+  "deptLevel": [
+    {
+      "name": "一级部门",
+      "value": "1"
+    },
+    {
+      "name": "二级部门",
+      "value": "2"
+    },
+    {
+      "name": "三级部门",
+      "value": "3"
+    }
+  ],
+  "chaType": [
+    {
+      "name": "渠道1",
+      "value": "1"
+    },
+    {
+      "name": "渠道2",
+      "value": "2"
+    }
+  ],
+  "areaType": [
+    {
+      "name": "地区1",
+      "value": "1"
+    },
+    {
+      "name": "地区2",
+      "value": "2"
+    }
+  ],
+  "yesOrNo": [
+    {
+      "name": "是",
+      "value": "是"
+    },
+    {
+      "name": "否",
+      "value": "否"
+    }
+  ],
+  "productType": [
+    {
+      "name": "封闭式基金",
+      "value": "封闭式基金"
+    }
+  ],
+  "productSubType": [
+    {
+      "name": "债券型",
+      "value": "债券型"
+    },
+    {
+      "name": "货币与理财型",
+      "value": "货币与理财型"
+    },
+    {
+      "name": "混合型",
+      "value": "混合型"
+    },
+    {
+      "name": "其他",
+      "value": "其他"
+    }
+  ],
+  "incomeType": [
+    {
+      "name": "固定收益",
+      "value": "固定收益"
+    },
+    {
+      "name": "浮动收益",
+      "value": "浮动收益"
+    }
+  ],
+  "termType": [
+    {
+      "name": "按天",
+      "value": "按天"
+    },
+    {
+      "name": "按月",
+      "value": "按月"
+    },
+    {
+      "name": "按年",
+      "value": "按年"
+    }
+  ],
+  "earningMode": [
+    {
+      "name": "日单利",
+      "value": "日单利"
+    }
+  ],
+  "allocationScheme": [
+    {
+      "name": "按天",
+      "value": "按天"
+    },
+    {
+      "name": "按月",
+      "value": "按月"
+    },
+    {
+      "name": "到期一次性给付",
+      "value": "到期一次性给付"
+    }
+  ],
+  "riskAssessment": [
+    {
+      "name": "低风险",
+      "value": "低风险"
+    },
+    {
+      "name": "中风险",
+      "value": "中风险"
+    },
+    {
+      "name": "高风险",
+      "value": "高风险"
+    }
+  ]
+}
+

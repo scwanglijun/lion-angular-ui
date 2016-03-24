@@ -1,0 +1,43 @@
+<div>
+    <input ng-click="dbOrgTree.selectOrg(field.name)" ng-model='dbForm.formData[field.name]'
+           name="{{field.name}}" ng-class="{'form-control-readonly':field.readonly}" readonly
+           type="{{field.type}}" placeholder="{{field.placeholder}}" ng-required="field.required"
+           ng-disabled="dbForm.isEditView?(field.editable?dbForm.globalFieldEditor:true):dbForm.globalFieldEditor"
+           class="form-control" ng-if="dbForm.formData">
+    <input ng-click="dbOrgTree.selectOrg(field.name)" ng-model='dbFormGrid.queryParams[field.name]'
+           name="{{field.name}}" ng-class="{'form-control-readonly':field.readonly}" readonly
+           type="{{field.type}}" placeholder="{{field.placeholder}}" ng-required="field.required"
+           ng-disabled="dbForm.isEditView?(field.editable?dbForm.globalFieldEditor:true):dbForm.globalFieldEditor"
+           class="form-control" ng-if="dbFormGrid.queryParams">
+
+        <span class="help-block"
+              ng-show="dataForm[field.name].$invalid && dbForm.submited">{{field.label}}字段为必录项!</span>
+    <script type="text/ng-template" id="dbOrgTreeModal_template.html">
+        <form name="dataForm" novalidate class="form-horizontal form">
+            <div class="modal-body form-horizontal form">
+                <div class="form-body portlet dbLight">
+                    <div class="portlet-title">
+                        <div class="caption font-green-sharp">
+                            <i class="iconfont font-green-sharp" style="font-size: 16px; margin-top: 0px;"></i>
+                            <span class="caption-subject bold uppercase">查询行政机构/部门科室</span>
+                        </div>
+                        <div class="tools">
+                            <i class="iconfont icon-guanbi" ng-click="modalClose()"></i>
+                        </div>
+                    </div>
+                    <div >
+                            <db-org-tree-search></db-org-tree-search>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="button" ng-click="closeModal()"><i
+                                class="iconfont icon-queding" style="color: white"></i>确定
+                        </button>
+                        <button class="btn btn-warning" type="button" ng-click="modalClose()"><i
+                                class="iconfont icon-guanbi" style="color: white"></i>关闭
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </script>
+</div>

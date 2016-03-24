@@ -1,0 +1,68 @@
+<div class="portlet-body">
+    <div class="form-body">
+        <div class="portlet-title ">
+            <div class="caption font-green-sharp">
+                <i class="iconfont icon-{{dbDataTable.title.icon}} font-green-sharp tabIcon"></i>
+                <span class="caption-subject bold uppercase">{{dbDataTable.title.label}}</span>
+            </div>
+        </div>
+        <div class="dbGrid">
+            <div class="table-scrollable">
+                <table class="table table-striped table-bordered table-hover dataTable no-footer">
+                    <thead style="background-color: #E9ECF3;">
+                    <tr>
+                        <th style="width:5%;text-align: center;">序号</th>
+                        <th ng-repeat="header in dbDataTable.tableHeaders" style="width: {{header.width}};text-align: center;"><span class="required must" ng-if="header.required"> * </span>{{header.label}}
+                        </th>
+                        <th style="width: {{header.width}}; text-align: center;" ng-show="!dbForm.globalFieldEditor">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-show="!dbForm.globalFieldEditor">
+                        <td style="width:5%;text-align: center;"><i class="icon-login-copy iconfont font-green-sharp tabIcon"></i></td>
+                        <td style="text-align: center;" ng-repeat="field in dbDataTable.tableHeaders">
+                            <!-- text -->
+                            <input ng-model="dbDataTable.tableData[[field.field]]" placeholder="{{field.placeholder}}" type="text" class="form-control center" ng-if="field.dataType=='text'" title="{{field.ruleMsg}}">
+                            <!-- number -->
+                            <input ng-model="dbDataTable.tableData[[field.field]]" placeholder="{{field.placeholder}}" type="number" class="form-control center" ng-if="field.dataType=='number'" title="{{field.ruleMsg}}">
+                            <!-- single select -->
+                            <ui-select ng-model="dbDataTable.tableData[[field.field]]" ng-if="field.dataType=='select'" title="{{field.ruleMsg}}">
+                                <ui-select-match placeholder="请选择">{{$select.selected.name}}</ui-select-match>
+                                <ui-select-choices
+                                        repeat="item in field.dropDownItemValue | selectPropsFilter:{name:$select.search}">
+                                    <span ng-bind-html="item.name | highlight: $select.search"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                            <!-- date -->
+                            <input ng-model="dbDataTable.tableData[field.field]" type="text" placeholder="{{field.placeholder}}" data-date-format="yyyy-mm-dd" class="form-control date-picker"
+                                   ng-if="field.dataType=='date'"
+                                   title="{{field.ruleMsg}}">
+                        </td>
+                        <td style="width:5%;text-align: center;">
+                            <div class="tools">
+                                <i class="iconfont icon-14052229 font-green-sharp tabIcon" ng-click="addData()" title="点击添加"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr ng-repeat="row in dbDataTable.rows">
+                        <td style="width:5%;text-align: center;">{{$index+1}}</td>
+                        <td ng-repeat="header in dbDataTable.tableHeaders" style="text-align: center;">
+                            <span>{{row[header.field]}}</span>
+                        </td>
+                        <td style="width:5%;text-align: center;" ng-show="!dbForm.globalFieldEditor">
+                            <div class="tools">
+                                <i class="icon-14052230 iconfont font-green-sharp tabIcon red" title="点击删除" ng-click="removeCurrent(row);"></i>
+                            </div>
+                        </td>
+                    <tr ng-show="dbDataTable.rows.length==0 && dbForm.globalFieldEditor">
+                        <td width="100%" colspan="{{dbDataTable.tableHeaders.length + 1}}" class="text-center">
+                            {{dbDataTable.loadingTip}}大饼君,并未查找到相关数据...
+                        </td>
+                    </tr>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

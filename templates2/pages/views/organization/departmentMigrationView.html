@@ -1,0 +1,18 @@
+<form name="dataForm" novalidate ng-submit="dbForm.submit(dataForm.$valid)" class="form-horizontal form">
+    <div class="modal-body form-horizontal form">
+        <div class="form-body portlet dbLight">
+            <div class="portlet-title" ng-if="dbForm.title.show">
+                <div class="caption font-green-sharp">
+                    <i class="icon-{{dbForm.title.icon}} iconfont font-green-sharp" style="font-size: 16px; margin-top: 0px;"></i>
+                    <span class="caption-subject bold uppercase">部门迁移</span>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <db-form-fields></db-form-fields>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="submit"><i class="iconfont icon-queding" style="color: white"></i>提交审批</button>
+            </div>
+        </div>
+    </div>
+</form>

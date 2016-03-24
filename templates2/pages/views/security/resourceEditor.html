@@ -1,0 +1,72 @@
+<form name="dataForm" novalidate ng-submit="submitDialogForm(dataForm.$valid)">
+
+    <div class="modal-body form-horizontal form">
+        <div class="form-body portlet light">
+            <div class="portlet-title">
+                <div class="caption font-green-sharp">
+                    <i class="icon-jingjiaziyuanwei iconfont font-green-sharp"></i>
+                    <span class="caption-subject bold uppercase">{{editData!=null?(formDisabled?'查看':'编辑'):'添加'}}资源信息</span>
+                </div>
+                <div class="tools">
+                    <i class="iconfont icon-guanbi" ng-click="cancel()"></i>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="form-body">
+                    <div class="row">
+                        <div class="form-group" ng-class="{ 'has-error' : dataForm.name.$invalid && submited}">
+                            <label class="control-label col-md-3"><span class="required">  * </span>资源名称</label>
+
+                            <div class="col-md-8">
+                                <input ng-model="data.name" name="name" db-validator="required" placeholder="资源中文名称" type="text" class="form-control" ng-disabled="formDisabled">
+                                <span class="help-block" ng-show="dataForm.name.$error.custom && submited">{{$dbForm.name.msg}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group" ng-class="{ 'has-error' : dataForm.type.$invalid && submited }">
+                            <label class="col-md-3 control-label"><span class="required"> * </span>资源类型</label>
+
+                            <div class="col-md-8">
+                                <ui-select ng-model="data.type" name="type" required ng-disabled="formDisabled">
+                                    <ui-select-match placeholder="请选择">{{$select.selected.name}}</ui-select-match>
+                                    <ui-select-choices
+                                            repeat="item in resourceType | selectPropsFilter:{name:$select.search}">
+                                        <span ng-bind-html="item.name | highlight: $select.search"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                                <span class="help-block" ng-show="dataForm.type.$invalid && submited ">不能为空</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">资源URL</label>
+
+                            <div class="col-md-8">
+                                <input ng-model="data.url" placeholder="资源URL，用来页面渲染菜单使用" type="text" class="form-control" ng-disabled="formDisabled">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">权限识别码</label>
+
+                            <div class="col-md-8">
+                                <input ng-model="data.permission" placeholder="对应资源transCode识别码" type="text" class="form-control" ng-disabled="formDisabled">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="margin-bottom: 0px;">
+                <button class="btn " ng-class="{'btn-primary':formDisabled,'btn-danger':!formDisabled}" ng-show="editData"
+                        type="button" ng-click="changeEdit()">
+                    {{formDisabled?'编辑':'取消'}}
+                </button>
+                <button class="btn btn-primary" type="submit" ng-show="!editData||!formDisabled">确定</button>
+                <button class="btn btn-warning" type="button" ng-click="cancel()">关闭</button>
+            </div>
+        </div>
+    </div>
+</form>

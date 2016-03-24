@@ -1,0 +1,25 @@
+<div class="page-sidebar navbar-collapse collapse">
+	<ul class="page-sidebar-menu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" ng-class="{'page-sidebar-menu-closed': settings.layout.pageSidebarClosed}">
+		<li ng-repeat="menu in pageHeaderMenus">
+			<a ui-sref="{{menu.url}}"  ng-if="menu.url&&menu.show">
+				<i class="iconfont icon-{{menu.icon}}"></i>
+				<span class="title">{{menu.name}}</span>
+				<i class="iconfont arrow {{menu.open}}" ng-if="menu.subList"></i>
+			</a>
+			<a href="javascript:void(0)"  ng-if="!menu.url&&menu.show">
+				<i class="iconfont icon-{{menu.icon}}"></i>
+				<span class="title">{{menu.name}}</span>
+				<i class="iconfont arrow {{menu.open}}" ng-if="menu.subList"></i>
+			</a>
+			<ul class="sub-menu"  ng-if="menu.subList">
+				<li ng-repeat="submenu in menu.subList"  ng-if="submenu.show">
+					<a ui-sref="{{submenu.url}}">
+						<i class="iconfont icon-{{submenu.icon}}"></i>
+						<span class="title">{{submenu.name}}</span>
+					</a>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	<!-- END SIDEBAR MENU -->
+</div>	

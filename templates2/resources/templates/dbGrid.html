@@ -1,0 +1,133 @@
+<div>
+    <div class="dbGrid table-scrollable">
+        <table class="table table-striped table-bordered table-hover dataTable no-footer">
+            <thead>
+            <tr>
+                <th ng-if="dbGrid.operation.multiple.show"
+                    style="width:{{dbGrid.operation.multiple.width}};text-align: center;">
+
+                    <div class="form-group form-md-checkboxes">
+                        <div class="md-checkbox-inline">
+                            <div class="md-checkbox">
+
+                                <input type="checkbox" class="md-check"
+                                       checked="checked" ng-if="dbGrid.operation.multiple.allRowChecked">
+                                <input type="checkbox" class="md-check"
+                                       ng-if="!dbGrid.operation.multiple.allRowChecked">
+
+                                <label ng-click="dbGridAllRowClick()"><span></span>
+                                    <span class="check"></span>
+                                    <span class="box"></span>
+                                </label>
+
+                            </div>
+                        </div>
+                    </div>
+                </th>
+                <th ng-repeat="header in dbGrid.header" style="width: {{header.width}};text-align: center;">
+                    {{header.name}}
+                </th>
+                <th ng-if="dbGrid.operation.single.show"
+                    style="width:{{dbGrid.operation.single.width}};text-align: center;">操作
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr ng-repeat="row in dbGrid.rows" ng-click="dbGridRowClick(row)"
+                ng-dblclick="dbGrid.operation.single.dbClick(row)">
+                <th ng-if="dbGrid.operation.multiple.show"
+                    style="width:{{dbGrid.operation.multiple.width}};text-align: center;">
+
+                    <div class="form-group form-md-checkboxes">
+                        <div class="md-checkbox-inline">
+                            <div class="md-checkbox">
+                                <input type="checkbox" checked="checked" ng-if="row.checked"/>
+                                <input type="checkbox" ng-if="!row.checked"/>
+                                <label>
+                                    <span></span>
+                                    <span class="check"></span>
+                                    <span class="box"></span>
+                                </label>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </th>
+                <td ng-repeat="header in dbGrid.header" style="text-align: center;">
+                    <a ng-click="header.link(row)" ng-class="header.class" ng-if="header.link">
+                        {{row[header.field]}}</a>
+                    <span ng-if="!header.link" ng-class="header.class"
+                          style="color:{{header.color(row[header.field],row)}}"> {{row[header.field]}}</span>
+                </td>
+                <td ng-if="dbGrid.operation.single.show" style="text-align: left;">
+                    <button type="button" class="btn btn-default {{button.class}}"
+                            ng-disabled="button.isDisabled(row)"
+                            ng-repeat="button in dbGrid.operation.single.list" style="padding: 4px 8px;"
+                            ng-hide="button.hide(row)" ng-click="button.click(row)">
+                        {{button.name}}
+                    </button>
+                </td>
+            </tr>
+            <tr ng-show="dbGrid.rows.length==0">
+                <td width="100%" ng-if="!dbGrid.operation.multiple.show && !dbGrid.operation.single.show"
+                    colspan="{{dbGrid.header.length}}" class="text-center">
+                    {{dbGrid.loadingTip}}
+                </td>
+                <td width="100%" ng-if="dbGrid.operation.multiple.show && dbGrid.operation.single.show"
+                    colspan="{{dbGrid.header.length + 2}}" class="text-center">
+                    {{dbGrid.loadingTip}}
+                </td>
+                <td width="100%" ng-if="dbGrid.operation.multiple.show || dbGrid.operation.single.show"
+                    colspan="{{dbGrid.header.length + 1}}" class="text-center">
+                    {{dbGrid.loadingTip}}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-sm-12">
+            <div class="db-pagination-info pagination">
+                共{{dbGrid.page.totalElements}}条&nbsp;&nbsp;共{{dbGrid.page.totalPages}}页
+            </div>
+        </div>
+        <div class="col-sm-12 pagination text-center"
+             ng-class="{'hide':!dbGrid.operation.multiple.show || !dbGrid.operation.multiple.list,'col-md-3':dbGrid.operation.multiple.show && dbGrid.operation.multiple.list}">
+            <div class="btn-group" ng-if="dbGrid.operation.multiple.show" style="text-align: center;">
+                <button type="button" class="btn btn-default {{button.class}}"
+                        ng-repeat="button in dbGrid.operation.multiple.list"
+                        ng-click="dbGridMultipleButtonClick(button.click)" ng-disabled="button.isDisabled()">
+                    {{button.name}}
+                </button>
+            </div>
+        </div>
+
+        <div class="text-right"
+             ng-class="{'col-md-8':!dbGrid.operation.multiple.show || !dbGrid.operation.multiple.list,'col-md-5':dbGrid.operation.multiple.show && dbGrid.operation.multiple.list}">
+            <div class="dataTables_paginate paging_simple_numbers">
+                <ul class="pagination">
+
+                    <li class="paginate_button" ng-click="dbGridReLoadData()">
+                        <a href="#" class="refresh"><i class="icon-shuaxin iconfont top"></i></a>
+                    </li>
+
+                    <li class="paginate_button previous {{dbGrid.page.prevPageDisabled}}"
+                        ng-click="dbGridPageNumberClick('prev')">
+                        <a href="#"><i class="glyphicon glyphicon-chevron-left"></i></a>
+                    </li>
+                    <li ng-repeat="number in dbGrid.page.pageNumbers"
+                        class="paginate_button {{number.active}} {{number.disabled}}"
+                        ng-click="dbGridPageNumberClick(number.number)">
+                        <a href="#">{{number.number}}</a>
+                    </li>
+                    <li class="paginate_button next {{dbGrid.page.nextPageDisabled}}"
+                        ng-click="dbGridPageNumberClick('next')"><a href="#"><i
+                            class="glyphicon glyphicon-chevron-right"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+<form name="dataForm" novalidate ng-submit="submitDialogForm(dataForm.$valid)">
+    <div class="modal-body form-horizontal form">
+        <div class="form-body portlet light">
+            <div class="portlet-title">
+                <div class="caption font-green-sharp">
+                    <i class="icon-page1 iconfont font-green-sharp"></i>
+                    <span class="caption-subject bold uppercase">拒绝审批流程</span>
+                </div>
+                <div class="tools">
+                    <i class="iconfont icon-guanbi" ng-click="cancel()"></i>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="form-body">
+                    <div class="row">
+                        <div class="col-md-12  margin-top-15">
+                            <div class="form-group" ng-class="{ 'has-error' : dataForm.auditDesc.$invalid && submited }">
+                                <label class="control-label col-md-2"><span class="required"> * </span>拒绝原因</label>
+                                <div class="col-md-9">
+                                    <input ng-model="data.auditDesc" name="auditDesc" db-validator="required" placeholder="请输入拒绝原因" type="text" class="form-control" ng-disabled="formDisabled">
+                                    <span class="help-block" ng-show="dataForm.auditDesc.$error.custom && submited">{{$dbForm.auditDesc.msg}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn " ng-class="{'btn-primary':formDisabled,'btn-danger':!formDisabled}" ng-show="editData" type="button" ng-click="changeEdit()">
+            {{formDisabled?'编辑':'取消'}}
+        </button>
+        <button class="btn btn-primary" type="submit" ng-show="!editData||!formDisabled">确定</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">关闭</button>
+    </div>
+</form>

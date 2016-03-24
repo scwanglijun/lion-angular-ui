@@ -1,0 +1,114 @@
+<div ng-repeat="section in dbForm.sections">
+    <div class="portlet-title" ng-if="section.sectionTitle.show">
+        <div class="caption font-green-sharp">
+            <i class="icon-{{section.sectionTitle.icon}} iconfont font-green-sharp tabIcon"></i>
+            <span class="caption-subject bold uppercase">{{section.sectionTitle.label}}</span>
+        </div>
+    </div>
+    <div class="row dbRow">
+        <div class="col-md-{{field.cols}}" ng-repeat="field in section.fields">
+            <!-- not range date -->
+            <div class="form-group" ng-class="{ 'has-error' : dataForm[field.name].$invalid && dbForm.submited }" ng-if="field.type!='dateRange' && field.type!='textarea'">
+                <label class="col-md-{{field.labelCols}} control-label" style="padding-right: 0;"><span class="required" ng-if="field.required"> * </span>{{field.label}}</label>
+
+                <!-- orgTree -->
+                <div class="col-md-{{field.labelCols==''?'':12-field.labelCols}} dbFormItem" ng-if="field.type==='orgTree'">
+                    <db-org-tree></db-org-tree>
+                </div>
+                <!-- resourceTree -->
+                <div class="col-md-{{field.labelCols==''?'':12-field.labelCols}} dbFormItem" ng-if="field.type==='resourceTree'">
+                    <db-resource-tree></db-resource-tree>
+                </div>
+
+                <!-- input -->
+                <div class="col-md-{{field.labelCols==''?'':12-field.labelCols}} dbFormItem" ng-if="field.type!='select' && field.type!='date' && field.type!='dateTime' && field.type!='orgTree' && field.type!='resourceTree'">
+                    <input ng-if="!field.clickEvent" ng-model='dbForm.formData[field.name]' name="{{field.name}}" type="{{field.type}}" placeholder="{{field.placeholder}}" ng-required="field.required"
+                           ng-disabled="field.disabled?field.disabled:(dbForm.isEditView?(field.editable?dbForm.globalFieldEditor:true):dbForm.globalFieldEditor)" class="form-control"
+                           ng-class="{'form-control-readonly':field.readonly}"
+                           ng-readonly="field.readonly">
+                    <input ng-if="field.clickEvent" ng-click="field.click(field.name,field)" ng-model='dbForm.formData[field.name]' name="{{field.name}}" ng-class="{'form-control-readonly':field.readonly}"
+                           ng-readonly="field.readonly" type="{{field.type}}" placeholder="{{field.placeholder}}" ng-required="field.required"
+                           ng-disabled="dbForm.isEditView?(field.editable?dbForm.globalFieldEditor:true):dbForm.globalFieldEditor" class="form-control">
+
+                    <span class="help-block" ng-show="dataForm[field.name].$invalid && dbForm.submited">{{field.label}}字段为必录项!</span>
+                </div>
+                <!-- select -->
+                <div class="col-md-{{field.labelCols==''?'':12-field.labelCols}} dbFormItem" ng-if="field.type=='select'">
+
+                    <div class="input-group" ng-if="field.showDelete">
+                        <ui-select ng-model="dbForm.formData[field.name]" theme="bootstrap"
+                                   name="{{field.name}}" ng-required="field.required" ng-readonly="field.readonly"
+                                   ng-disabled="dbForm.isEditView?(field.editable?dbForm.globalFieldEditor:true):dbForm.globalFieldEditor">
+                            <ui-select-match placeholder="请选择">{{$select.selected.name}}</ui-select-match>
+                            <ui-select-choices
+                                    repeat="item in field.dropDownItemValue | selectPropsFilter:{name:$select.search}">
+                                <div ng-bind-html="item.name | highlight: $select.search"></div>
+                            </ui-select-choices>
+                        </ui-select>
+                                    <span class="input-group-btn">
+                                      <button ng-click="dbForm.formData[field.name] = [{name: '', value: ''}]" ng-disabled="dbForm.isEditView?(field.editable?dbForm.globalFieldEditor:true):dbForm.globalFieldEditor"
+                                              class="btn btn-default" type="button">
+                                          <span class="glyphicon glyphicon-trash"></span>
+                                      </button>
+                                    </span>
+                        <span class="help-block" ng-show="dataForm[field.name].$invalid && dbForm.submited ">{{field.label}}字段为必录项!</span>
+
+                    </div>
+                    <div ng-if="!field.showDelete">
+                        <ui-select ng-model='dbForm.formData[field.name]' name="{{field.name}}" ng-required="field.required" ng-readonly="field.readonly"
+                                   ng-disabled="dbForm.isEditView?(field.editable?dbForm.globalFieldEditor:true):dbForm.globalFieldEditor">
+                            <ui-select-match placeholder="请选择">{{$select.selected.name}}</ui-select-match>
+                            <ui-select-choices
+                                    repeat="item in field.dropDownItemValue | selectPropsFilter:{name:$select.search}">
+                                <span ng-bind-html="item.name | highlight: $select.search"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                        <span class="help-block" ng-show="dataForm[field.name].$invalid && dbForm.submited ">{{field.label}}字段为必录项!</span>
+                    </div>
+                </div>
+                <!-- single date -->
+                <div class="col-md-{{field.labelCols==''?'':12-field.labelCols}} dbFormItem" ng-if="field.type==='date'">
+                    <input ng-model="dbForm.formData[field.name]" name="{{field.name}}" type="text" placeholder="{{field.placeholder}}" data-date-format="yyyy-mm-dd" ng-required="field.required" readonly
+                           ng-disabled="dbForm.isEditView?(field.editable?dbForm.globalFieldEditor:true):dbForm.globalFieldEditor" class="form-control date-picker form-control-readonly">
+                    <span class="help-block" ng-show="dataForm[field.name].$invalid && dbForm.submited ">{{field.label}}字段为必录项!</span>
+                </div>
+                <!-- single dateTime -->
+                <div class="col-md-{{field.labelCols==''?'':12-field.labelCols}} dbFormItem" ng-if="field.type==='dateTime'">
+                    <input ng-model="dbForm.formData[field.name]" name="{{field.name}}" type="text" placeholder="{{field.placeholder}}" data-date-format="yyyy-mm-dd" ng-required="field.required" readonly
+                           ng-disabled="dbForm.isEditView?(field.editable?dbForm.globalFieldEditor:true):dbForm.globalFieldEditor" class="form-control date-picker form-control-readonly">
+                    <span class="help-block" ng-show="dataForm[field.name].$invalid && dbForm.submited ">{{field.label}}字段为必录项!</span>
+                </div>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error' : (dataForm.startDate.$invalid || dataForm.endDate.$invalid) && dbForm.submited }" ng-if="field.type=='dateRange'">
+                <label class="col-md-{{field.labelCols}} control-label" style="padding-right: 0;"><span class="required" ng-if="field.required"> * </span>{{field.label}}</label>
+
+                <!-- range date -->
+                <div class="col-md-{{field.labelCols==''?'':12-field.labelCols}} dbFormItem">
+                    <div class=" input-group input-larger date-picker input-daterange" style="width: 100%;" data-date="now" data-date-format="yyyy-mm-dd">
+                        <input ng-model="dbForm.formData.startDate" name="startDate" type="text" placeholder="开始日期" ng-required="field.required"
+                               ng-disabled="dbForm.isEditView?(field.editable?dbForm.globalFieldEditor:true):dbForm.globalFieldEditor" readonly
+                               class="form-control form-control-readonly">
+                        <span class="input-group-addon">-</span>
+                        <input ng-model="dbForm.formData.endDate" name="endDate" type="text" placeholder="结束日期" ng-required="field.required"
+                               ng-disabled="dbForm.isEditView?(field.editable?dbForm.globalFieldEditor:true):dbForm.globalFieldEditor" readonly
+                               class="form-control form-control-readonly">
+                    </div>
+                    <span class="help-block" ng-show="(dataForm.startDate.$invalid || dataForm.endDate.$invalid) && dbForm.submited ">{{field.label}}字段为必录项!</span>
+                </div>
+
+            </div>
+            <!-- textarea -->
+            <div class="form-group" ng-class="{ 'has-error' : dataForm[field.name].$invalid && dbForm.submited }" ng-if="field.type=='textarea'">
+                <label class="control-label col-md-{{field.labelCols}}"><span class="required" ng-if="field.required"> * </span>{{field.label}}</label>
+
+                <div class="col-md-{{field.labelCols==''?'':12-field.labelCols}} dbFormItem">
+                    <textarea ng-model="dbForm.formData[field.name]" placeholder="{{field.placeholder}}" ng-readonly="field.readonly" name="dbForm.formData[field.name]" class="form-control"
+                              ng-class="{'form-control-readonly':field.readonly}" ng-required="field.required"
+                              style="resize: none"
+                              ng-disabled="dbForm.isEditView?(field.editable?dbForm.globalFieldEditor:true):dbForm.globalFieldEditor"></textarea>
+                    <span class="help-block" ng-show="dataForm[field.name].$invalid && dbForm.submited ">{{field.label}}字段为必录项!</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

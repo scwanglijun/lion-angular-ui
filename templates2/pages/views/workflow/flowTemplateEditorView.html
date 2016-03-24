@@ -1,0 +1,121 @@
+<form name="dataForm" novalidate ng-submit="submitDialogForm(dataForm.$valid)">
+    <div class="modal-body form-horizontal form">
+        <div class="form-body portlet light">
+            <div class="portlet-title">
+                <div class="caption font-green-sharp">
+                    <i class="icon-page1 iconfont font-green-sharp"></i>
+                    <span class="caption-subject bold uppercase">{{editData?(formDisabled?'查看':'编辑'):'新增'}}审核</span>
+                </div>
+                <div class="tools">
+                    <i class="iconfont icon-guanbi" ng-click="cancel()"></i>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="form-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group" ng-class="{ 'has-error' : dataForm.flowType.$invalid && submited }">
+                                <label class="control-label col-md-4"><span class="required">  * </span>业务类型</label>
+                                <div class="col-md-8">
+                                    <ui-select ng-model="data.flowType" name="flowType" required ng-disabled="formDisabled">
+                                        <ui-select-match placeholder="请选择业务类型">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices  repeat="item in flowType | selectPropsFilter:{name:$select.search}">
+                                            <span ng-bind-html="item.name | highlight: $select.search"></span>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                    <span class="help-block" ng-show="dataForm.flowType.$invalid && submited ">不能为空!</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group" ng-class="{ 'has-error' : dataForm.roleCode.$invalid && submited }">
+                                <label class="control-label col-md-4"><span class="required">  * </span>角色代码</label>
+
+                                <div class="col-md-8">
+                                    <input ng-model="data.roleCode" name="roleCode" db-validator="required" placeholder="请输入角色代码" type="text" class="form-control" ng-disabled="formDisabled">
+                                    <span class="help-block" ng-show="dataForm.roleCode.$error.custom && submited">{{$dbForm.roleCode.msg}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">流程编码</label>
+                                <div class="col-md-8">
+                                    <input ng-model="data.stepNo" class="form-control" type="text" readonly="true"   ng-disabled="formDisabled">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group" ng-class="{ 'has-error' : dataForm.stepName.$invalid && submited }">
+                                <label class="col-md-4 control-label"><span class="required">  * </span>步骤名称</label>
+
+                                <div class="col-md-8">
+                                    <input ng-model="data.stepName"   name="stepName" class="form-control" db-validator="required" type="text" placeholder="请输入步骤名称" ng-disabled="formDisabled">
+                                    <span class="help-block" ng-show="dataForm.stepName.$error.custom && submited">{{$dbForm.stepName.msg}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group" ng-class="{ 'has-error' : dataForm.stepOrder.$invalid && submited }">
+                                <label class="col-md-4 control-label"><span class="required">  * </span>步骤顺序</label>
+                                <div class="col-md-8">
+                                    <input ng-model="data.stepOrder" name="stepOrder"  class="form-control" db-validator="required" type="number" placeholder="请输入步顺序" ng-disabled="formDisabled">
+                                    <span class="help-block" ng-show="dataForm.stepOrder.$error.custom && submited">{{$dbForm.stepOrder.msg}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Service名称</label>
+
+                                <div class="col-md-8">
+                                    <input ng-model="data.serviceName" class="form-control" type="text" placeholder="请输入Service名称" ng-disabled="formDisabled">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">方法名</label>
+                                <div class="col-md-8">
+                                    <input ng-model="data.methodName" class="form-control" type="text" placeholder="请输入方法名" ng-disabled="formDisabled">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">描述</label>
+                                <div class="col-md-8">
+                                    <input ng-model="data.desc" class="form-control" type="text" placeholder="备注"  ng-disabled="formDisabled">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-7 col-md-offset-5">
+                                        <label class="checkbox">
+                                            <input ng-model="data.stepEnd" type="checkbox"     ng-disabled="formDisabled"> 结束流程
+                                        </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn " ng-class="{'btn-primary':formDisabled,'btn-danger':!formDisabled}" ng-show="editData" type="button" ng-click="changeEdit()">
+            {{formDisabled?'编辑':'取消'}}
+        </button>
+        <button class="btn btn-primary" type="submit" ng-show="!editData||!formDisabled">确定</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">关闭</button>
+    </div>
+</form>

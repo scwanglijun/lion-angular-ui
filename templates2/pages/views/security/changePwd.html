@@ -1,0 +1,52 @@
+<form name="dataForm" novalidate ng-submit="submitDialogForm(dataForm.$valid)">
+
+    <div class="modal-body form-horizontal form">
+        <div class="form-body portlet light">
+            <div class="portlet-title">
+                <div class="caption font-green-sharp">
+                    <i class="icon-access_user iconfont font-green-sharp"></i>
+                    <span class="caption-subject bold uppercase">编辑密码</span>
+                </div>
+                <div class="tools">
+                    <i class="iconfont icon-cuowu" ng-click="cancel()"></i>
+                </div>
+            </div>
+            <div class="form-body">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label col-md-3">登录用户名</label>
+
+                        <div class="col-md-9">
+                            <input ng-model="data.loginName" type="text" class="form-control" ng-disabled="true">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group" ng-class="{ 'has-error' : (dataForm.password.$invalid && submited) || passwordMsg }">
+                        <label class="control-label col-md-3"><span class="required">  * </span>新密码</label>
+
+                        <div class="col-md-9">
+                            <input ng-model="data.password" name="password" db-validator="required" placeholder="请输入密码" type="password" class="form-control" ng-disabled="formDisabled">
+                            <span class="help-block" ng-show="dataForm.password.$error.custom && submited">{{$dbForm.password.msg}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group" ng-class="{ 'has-error' : (dataForm.checkPassword.$invalid && submited) || passwordMsg }">
+                        <label class="control-label col-md-3"><span class="required">  * </span>确认密码</label>
+
+                        <div class="col-md-9">
+                            <input ng-model="data.checkPassword" name="checkPassword" db-validator="required" placeholder="请在输入一次密码" type="password" class="form-control" ng-disabled="formDisabled">
+                            <span class="help-block" ng-show="passwordMsg">{{passwordMsg}}</span>
+                            <span class="help-block" ng-show="dataForm.checkPassword.$error.custom && submited">{{$dbForm.checkPassword.msg}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="padding: 20px 20px 0px 0px; text-align: right;">
+                <button class="btn btn-primary" type="submit">确定</button>
+                <button class="btn btn-warning" type="button" ng-click="cancel()">关闭</button>
+            </div>
+        </div>
+    </div>
+</form>

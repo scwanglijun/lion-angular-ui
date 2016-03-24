@@ -1,0 +1,29 @@
+<div class="portlet-body">
+    <div class="row" ng-show="dbOrgTreeSearch.settings.showSearch">
+        <div class="col-md-4">
+            <ui-select ng-model='dbOrgTreeSearch.queryForm.type' name="type"
+                       on-select="dbOrgTreeSearch.changeQueryType($item, $model)">
+                <ui-select-match placeholder="请选择">{{$select.selected.name}}</ui-select-match>
+                <ui-select-choices
+                        repeat="item in dbOrgTreeSearch.typeSelects | selectPropsFilter:{name:$select.search}">
+                    <span ng-bind-html="item.name | highlight: $select.search"></span>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+        <div class="col-md-8">
+            <ui-select ng-model="dbOrgTreeSearch.queryForm.keyWord"
+                       theme="bootstrap"
+                       reset-search-input="false"
+                      on-select="dbOrgTreeSearch.queryOnSelect($item, $model)">
+                <ui-select-match placeholder="输入关键字查询">{{$select.selected.orgName}}
+                </ui-select-match>
+                <ui-select-choices repeat="result in dbOrgTreeSearch.searchDataSource track by $index"
+                                   refresh="dbOrgTreeSearch.refreshDataSource($select.search)"
+                                   refresh-delay="0">
+                    <div ng-bind-html="result.orgNamePath | highlight: $select.search"></div>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+    </div>
+    <db-tree></db-tree>
+</div>

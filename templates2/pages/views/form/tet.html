@@ -1,0 +1,10 @@
+<ui-select ng-disabled="editData"
+           required
+           name="{{field.name}}" ng-if="field.name=='select'">
+    <ui-select-match placeholder="{{field.placeholder}}">{{$select.selected.name}}</ui-select-match>
+    <ui-select-choices
+            repeat="item in {{field.dropDownItem}} | selectPropsFilter:{name:$select.search}">
+        <span ng-bind-html="item.name | highlight: $select.search"></span>
+    </ui-select-choices>
+</ui-select>
+<span class="help-block" ng-show="dataForm.{{field.name}}.$invalid && submited " ng-if="field.name=='select'">不能为空</span>

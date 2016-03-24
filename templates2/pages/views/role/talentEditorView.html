@@ -1,0 +1,65 @@
+<form name="dataForm" novalidate ng-submit="submitForm(dataForm.$valid)">
+    <div class="modal-body form-horizontal form">
+        <div class="form-body portlet light">
+            <div class="portlet-title">
+                <div class="caption font-green-sharp">
+                    <i class="icon-luru iconfont font-green-sharp  tabIcon"></i>
+                    <span class="caption-subject bold uppercase">人才信息录入</span>
+                </div>
+                <div class="tools">
+                    <i class="iconfont icon-guanbi" ng-click="cancel()"></i>
+                </div>
+            </div>
+            <ul class="nav nav-tabs">
+                <li class="{{'tabInfo1' == contentId?'active font-green-sharp':''}}">
+                    <a ng-click="changeTab('tabInfo1')" data-toggle="tab">
+                        <i class="icon-zhuyaogongnenggai iconfont tabIcon"></i>基本信息</a>
+                </li>
+                <li class="{{'tabInfo2' == contentId?'active font-green-sharp':''}}">
+                    <a ng-click="changeTab('tabInfo2')" data-toggle="tab">
+                        <i class="icon-lianxi iconfont tabIcon"></i>联系信息</a>
+                </li>
+                <li class="{{'tabInfo3' == contentId?'active font-green-sharp':''}}">
+                    <a ng-click="changeTab('tabInfo3')" data-toggle="tab">
+                        <i class="icon-dizhi iconfont tabIcon"></i>地址信息</a>
+                </li>
+                <li class="{{'tabInfo4' == contentId?'active font-green-sharp':''}}">
+                    <a ng-click="changeTab('tabInfo4')" data-toggle="tab">
+                        <i class="icon-jiaoyujingli iconfont tabIcon"></i>个人履历</a>
+                </li>
+                <li class="{{'tabInfo5' == contentId?'active font-green-sharp':''}}">
+                    <a ng-click="changeTab('tabInfo5')" data-toggle="tab">
+                        <i class="icon-5176 iconfont tabIcon"></i>家庭关系人</a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane fade {{'tabInfo1' == contentId?'active in':''}}">
+                    <div class="portlet-body">
+                        <db-form-fields></db-form-fields>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade {{'tabInfo2' == contentId?'active in':''}}" ng-controller="relationInfoEditorCtrl">
+                    <db-data-table></db-data-table>
+                </div>
+                <div class="tab-pane fade {{'tabInfo3' == contentId?'active in':''}}" ng-controller="addressInfoEditorCtrl">
+                    <db-data-table></db-data-table>
+                </div>
+                <div class="tab-pane fade {{'tabInfo4' == contentId?'active in':''}}" ng-controller="experiencesEditorCtrl">
+                    <db-data-table></db-data-table>
+                </div>
+                <div class="tab-pane fade {{'tabInfo5' == contentId?'active in':''}}" ng-controller="familyRelationsEditorCtrl">
+                    <db-data-table></db-data-table>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn " ng-class="{'btn-info':dbForm.globalFieldEditor,'btn-danger':!dbForm.globalFieldEditor}" ng-show="dbForm.showEditBtn" type="button" ng-click="dbForm.changeEditStatus()">
+                        {{dbForm.globalFieldEditor?'编辑':'取消'}}
+                    </button>
+                    <button class="btn btn-primary" type="submit" ng-show="!dbForm.showEditBtn || !dbForm.globalFieldEditor">确定</button>
+                    <button class="btn btn-warning" type="button" ng-click="cancel()">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

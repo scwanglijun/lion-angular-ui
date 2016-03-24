@@ -1,0 +1,24 @@
+<div role="form" class="form-horizontal form">
+    <div class="portlet light form-body">
+        <ul class="nav nav-tabs">
+            <li class="{{'tabInfo1' == contentId?'active font-green-sharp':''}}">
+                <a ng-click="changeTab('tabInfo1')" data-toggle="tab">
+                    <i class="icon-shujuzidianguanli iconfont top"></i>字典大类配置</a>
+            </li>
+            <li class="{{'tabInfo2' == contentId?'active font-green-sharp':''}}">
+                <a ng-click="changeTab('tabInfo2')" data-toggle="tab">
+                    <i class="icon-shujuzidianguanli iconfont top"></i>字典项配置</a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane fade {{'tabInfo1' == contentId?'active in':''}}" ng-controller="imCodeTypeListCtrl">
+                <db-form-grid></db-form-grid>
+            </div>
+
+            <div class="tab-pane fade {{'tabInfo2' == contentId?'active in':''}}" ng-controller="imCodeListCtrl">
+                <db-form-grid></db-form-grid>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="main">
+<head>
+    <meta charset="UTF-8">
+    <title>Toaster Demo</title>
+    <link href="../../../resources/lib/global/plugins/bootstrap/css/bootstrap.min.css" type="application/javascript"/>
+    <link href="../../../resources/lib/global/plugins/toaster/toaster.css" rel="stylesheet" type="application/javascript"/>
+    <script src="../../../resources/lib/global/plugins/angularjs/angular.min.js" type="application/javascript"></script>
+    <script src="../../../resources/lib/global/plugins/angularjs/angular-animate.min.js" type="application/javascript"></script>
+    <script src="toaster.js" type="application/javascript"></script>
+    <script src="script.js" type="application/javascript"></script>
+</head>
+<body>
+<div>
+    <div>
+        <div ng-controller="myController">
+            <!-- NOTE: remove 'animation-class': 'toast-top-center' if you want it on the left top corner -->
+            <toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'animation-class': 'toast-top-center'}"></toaster-container>
+            <toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'animation-class': 'toast-top-center'}"></toaster-container>
+            <button class="btn btn-primary" style="margin: 150px 0 0 150px;" ng-click="pop()">Show toasts</button>
+            <br />
+            <button class="btn btn-danger" style="margin: 10px 0 0 150px;" ng-click="clear()">Clear toasts</button>
+        </div>
+    </div>
+
+    <script type="text/ng-template" id="toasterBodyTmpl.html">
+        <p>Render a default template!</p>
+    </script>
+
+    <script type="text/ng-template" id="myTemplate.html">
+        <p>Render a custom template! {{bar}}</p>
+    </script>
+
+    <script type="text/ng-template" id="myTemplateWithData.html">
+        <p>Here it is! {{toaster.data}}</p>
+    </script>
+</div>
+</body>
+</html>

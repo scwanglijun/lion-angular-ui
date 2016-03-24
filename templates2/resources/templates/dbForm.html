@@ -1,0 +1,29 @@
+<form name="dataForm" novalidate ng-submit="dbForm.submit(dataForm.$valid)" class="form-horizontal form">
+    <div class="modal-body form-horizontal form">
+        <div class="form-body portlet dbLight" style="margin-bottom: 0px;">
+            <div class="portlet-title" ng-if="dbForm.title.show">
+                <div class="caption font-green-sharp">
+                    <i class="icon-{{dbForm.title.icon}} iconfont font-green-sharp" style="font-size: 16px; margin-top: 0px;"></i>
+                    <span class="caption-subject bold uppercase">{{dbForm.showEditBtn?(dbForm.globalFieldEditor?'查看':'编辑'):'新增'}}{{dbForm.title.label}}</span>
+                </div>
+                <div class="tools" ng-if="dbForm.settings.showClose">
+                    <i class="iconfont icon-guanbi" ng-click="dbForm.modalClose()"></i>
+                </div>
+            </div>
+
+            <div class="portlet-body">
+                <db-form-fields></db-form-fields>
+            </div>
+            <div class="modal-footer" ng-show="!dbForm.viewDetail">
+                <button class="btn " ng-class="{'btn-primary':dbForm.globalFieldEditor,'btn-danger':!dbForm.globalFieldEditor}" ng-show="dbForm.showEditBtn" type="button" ng-click="dbForm.changeEditStatus()">
+                    <i class="iconfont icon-luru" style="color: white" ng-if="dbForm.globalFieldEditor"></i><i class="iconfont icon-weibiaoti3" style="color: white" ng-if="!dbForm.globalFieldEditor"></i>{{dbForm.globalFieldEditor?'编辑':'取消'}}
+                </button>
+                <button class="btn btn-primary" type="submit" ng-show="!dbForm.showEditBtn || !dbForm.globalFieldEditor"><i class="iconfont icon-queding" style="color: white"></i>确定</button>
+                <button class="btn btn-warning" type="button" ng-click="dbForm.modalClose()" ng-if="dbForm.settings.showClose"><i class="iconfont icon-guanbi" style="color: white"></i>关闭</button>
+            </div>
+            <div class="modal-footer" ng-show="dbForm.viewDetail">
+                <button class="btn btn-warning" type="button" ng-click="dbForm.modalClose()" ng-if="dbForm.settings.showClose"><i class="iconfont icon-guanbi" style="color: white"></i>关闭</button>
+            </div>
+        </div>
+    </div>
+</form>
