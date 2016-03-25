@@ -10,36 +10,36 @@
         "certificateType":"2015-07-20 17:16:28"
       },
       {
-        "partyNo":"SYSADMIN_ROLE",
-        "partyName":"系统管理角色",
-        "organizationName":"系统管理角色",
+        "partyNo":"SALES_MGR",
+        "partyName":"销售总经理",
+        "organizationName":"销售总经理",
         "departmentName":"是",
-        "businessType":"2013-03-24 11:34:17",
-        "certificateType":"2015-07-20 17:16:28"
+        "businessType":"2013-03-24 11:34:58",
+        "certificateType":"2014-05-21 17:29:27"
       },
       {
-        "partyNo":"SYSADMIN_ROLE",
-        "partyName":"系统管理角色",
-        "organizationName":"系统管理角色",
+        "partyNo":"ReportRoles",
+        "partyName":"报表管理角色",
+        "organizationName":"报表管理角色",
         "departmentName":"是",
-        "businessType":"2013-03-24 11:34:17",
-        "certificateType":"2015-07-20 17:16:28"
+        "businessType":"2013-04-10 20:28:57",
+        "certificateType":"2014-05-22 14:24:11"
       },
       {
-        "partyNo":"SYSADMIN_ROLE",
-        "partyName":"系统管理角色",
-        "organizationName":"系统管理角色",
+        "partyNo":"EMAIL_ROLES",
+        "partyName":"邮件角色",
+        "organizationName":"邮件角色",
         "departmentName":"是",
-        "businessType":"2013-03-24 11:34:17",
-        "certificateType":"2015-07-20 17:16:28"
+        "businessType":"2013-04-10 20:26:40",
+        "certificateType":"2015-02-16 18:03:32"
       },
       {
-        "partyNo":"SYSADMIN_ROLE",
-        "partyName":"系统管理角色",
-        "organizationName":"系统管理角色",
+        "partyNo":"demo",
+        "partyName":"demo",
+        "organizationName":"demo",
         "departmentName":"是",
-        "businessType":"2013-03-24 11:34:17",
-        "certificateType":"2015-07-20 17:16:28"
+        "businessType":"2014-05-22 17:51:18",
+        "certificateType":"2016-03-17 14:18:03"
       }
     ],
     "first":false,

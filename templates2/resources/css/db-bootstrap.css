@@ -255,3 +255,27 @@ textarea::-webkit-input-placeholder {
 .jstree-children .collapse{
     display: none;
 }
+/*表格排序CSS*/
+.headerName{
+    width: 90%;
+    text-align: center;
+}
+.sorting{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top: 4px;
+    left: 10px;
+}
+.sorting_asc {
+
+    background: url('images/sort_asc.png') no-repeat center right;
+}
+.sorting_both {
+
+    background: url('images/sort_both.png') no-repeat center right;
+}
+.sorting_desc {
+    background: url('images/sort_desc.png') no-repeat center right;
+}

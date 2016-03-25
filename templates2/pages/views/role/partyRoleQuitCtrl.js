@@ -51,7 +51,7 @@ function PartyRoleQuitCtrl($scope, $modal, dbUtils) {
                         color = "red"
                     }
                     return color;
-                },
+                }
             },
             operationEvents: [{
                 name: "删除", class: "btn-danger", icon: "shanchu", click: function () {
@@ -102,7 +102,7 @@ function PartyRoleQuitCtrl($scope, $modal, dbUtils) {
     function auditStatusHistory(currentRecord) {
         $modal.open({
             animation: true,
-            templateUrl: 'views/roles.json/partNoAuditHistoryView.html',
+            templateUrl: 'views/roles/partNoAuditHistoryView.html',
             controller: 'partNoAuditHistoryCtrl',
             size: "lg",
             backdrop: "static",

@@ -157,6 +157,7 @@ dbFormGridDirectives.directive('dbFormGrid', ['dbUtils', function (dbUtils) {
         restrict: 'E',
         templateUrl: Metronic.getResourcesPath() + "templates/dbFormGrid.html",
         replace: true,
+        require:'dbFormGrid',
         controller: ['$scope', 'dbImService', function ($scope, dbImService) {
             //queryForm
 
@@ -227,13 +228,13 @@ dbFormGridDirectives.directive('dbFormGrid', ['dbUtils', function (dbUtils) {
                     pageSize: $scope.dbFormGrid.page.pageSize
                 };
                 dbUtils.post($scope.dbFormGrid.options.grid.settings.transCode, queryParams, function (data) {
-                    console.log(data);
                     //获取每行数据，并调用format方法进行处理，最后赋值给$scope.dbFormGrid.rows
                     var rows = data.content;
                     for (var i in rows) {
                         var row = rows[i];
                         for (var j in $scope.dbFormGrid.options.grid.header) {
                             var header = $scope.dbFormGrid.options.grid.header[j];
+                            header.sortingClass = "sorting_both";
                             var value = (row[header.field] || "");
                             if (!angular.isUndefined($scope.dbFormGrid.events.grid.fieldEvents)) {
                                 var colorEvent = $scope.dbFormGrid.events.grid.fieldEvents[header.field + 'Color'];
@@ -410,9 +411,48 @@ dbFormGridDirectives.directive('dbFormGrid', ['dbUtils', function (dbUtils) {
             $scope.dbFormGrid.setFormDataField = function (fieldName, value) {
                 $scope.dbFormGrid.queryParams[fieldName] = value;
             };
+            $scope.dbFormGrid.sorting=function(header){
+                angular.forEach($scope.dbFormGrid.options.grid.header, function (h) {
+                    if(angular.equals(h.field,header.field)){
+                        if(angular.isUndefined(header.sortingClass)){
+                            h.sortingClass="sorting_asc";
+                        }else if( h.sortingClass =="sorting_asc"){
+                            h.sortingClass = "sorting_desc";
+                        }else{
+                            h.sortingClass = "sorting_asc";
+                        }
+                    }else{
+                        h.sortingClass = "sorting_both";
+                    }
+                });
+                // 执行排序功能
+                if(header.sortingClass=="sorting_desc"){
+                    $scope.dbFormGrid.rows = descSort($scope.dbFormGrid.rows,header.field);
+                }else{
+                    $scope.dbFormGrid.rows = ascSort($scope.dbFormGrid.rows,header.field);
+                }
+
+                function ascSort(json,key){
+                    return json.sort(function(a, b) {
+                        var x = a[key];
+                        var y = b[key];
+                        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+                    });
+                }
+                function descSort(json,key){
+                    return json.sort(function(a, b) {
+                        var x = a[key];
+                        var y = b[key];
+                        return ((x > y) ? -1 : ((x < y) ? 1 : 0));
+                    });
+                }
+
+            }
+
         }],
-        link: function (scope, element, attrs) {
-            console.log("db form grid link");
+        link: function (scope, element, attrs,controller) {
+            scope.sortingClass="sorting_both";
+
         }
     }
 }]);

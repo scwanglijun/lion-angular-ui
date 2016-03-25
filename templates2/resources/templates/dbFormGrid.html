@@ -119,7 +119,8 @@
                         </th>
                         <th ng-repeat="header in dbFormGrid.options.grid.header"
                             style="width: {{header.width}};text-align: center;" ng-show="true" title="{{header.name}}">
-                            {{header.name}}
+                            <span class="headerName">{{header.name}}</span>
+                            <i ng-click="dbFormGrid.sorting(header)" class="sorting {{header.sortingClass}}" id="sorting"></i>
                         </th>
                         <th ng-if="dbFormGrid.options.grid.rowOperation.show"
                             style="width:{{dbFormGrid.options.grid.rowOperation.width}};text-align: center;">操作
