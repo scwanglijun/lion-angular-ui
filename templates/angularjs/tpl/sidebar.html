@@ -1,7 +1,7 @@
 <div class="page-sidebar-wrapper">
   <div class="page-sidebar navbar-collapse collapse">
 
-	<ul class="page-sidebar-menu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+	<!--<ul class="page-sidebar-menu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
 		<li class="heading">
 			<h3>GENERAL</h3>
 		</li>
@@ -582,7 +582,43 @@
 				</li>
 			</ul>
 		</li>
-	</ul>
+	</ul>-->
 	<!-- END SIDEBAR MENU -->
+
+	  <!--动态加载sidebar  menu-->
+	  <ul class="page-sidebar-menu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" ng-class="{'page-sidebar-menu-closed': settings.layout.pageSidebarClosed}">
+		  <li ng-repeat="menu in menus">
+			  <a href="{{menu.url}}"  ng-if="menu.url&&menu.show">
+				  <i class="iconfont icon-{{menu.icon}}"></i>
+				  <span class="title">{{menu.name}}</span>
+				  <i class="iconfont arrow {{menu.open}}" ng-if="menu.subList"></i>
+			  </a>
+			  <a href="{{menu.url}}"  ng-if="!menu.url&&menu.show">
+				  <i class="iconfont icon-{{menu.icon}}"></i>
+				  <span class="title">{{menu.name}}</span>
+				  <i class="iconfont arrow {{menu.open}}" ng-if="menu.subList"></i>
+			  </a>
+			  <ul class="sub-menu"  ng-if="menu.subList">
+				  <li ng-repeat="submenu in menu.subList"  ng-if="submenu.show">
+					  <a href="{{submenu.url}}">
+						  <i class="iconfont icon-{{submenu.icon}}"></i>
+						  <span class="title">{{submenu.name}}</span>
+						  <i class="iconfont arrow {{submenu.open}}" ng-if="submenu.subList"></i>
+					  </a>
+
+					  <ul class="sub-menu"  ng-if="submenu.subList">
+						  <li ng-repeat="subsubmenu in submenu.subList"  ng-if="submenu.show">
+							  <a href="{{subsubmenu.url}}">
+								  <i class="iconfont icon-{{subsubmenu.icon}}"></i>
+								  <span class="title">{{subsubmenu.name}}</span>
+							  </a>
+						  </li>
+					  </ul>
+				  </li>
+			  </ul>
+		  </li>
+	  </ul>
+	  <!-- END SIDEBAR MENU -->
+
   </div>	
 </div>

@@ -3,8 +3,8 @@ GLobal Directives
 ***/
 
 // Route State Load Spinner(used on page or content load)
-MetronicApp.directive('ngSpinnerBar', ['$rootScope',
-    function($rootScope) {
+MetronicApp.directive('ngSpinnerBar', ['$rootScope','settings',
+    function($rootScope,settings) {
         return {
             link: function(scope, element, attrs) {
                 // by defult hide the spinner bar
